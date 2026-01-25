@@ -68,17 +68,24 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
         console.print(f"[red]❌ Error: AI-CONTEXT.md not found in {project_path}[/red]")
         return
 
-    # 2. Setup Initial State
+    # 2. Read AI-CONTEXT.md for context continuity
+    with open(context_path, "r") as f:
+        ai_context = f.read()
+
+    console.print(f"[dim]📖 Loaded AI-CONTEXT.md ({len(ai_context)} chars)[/dim]")
+
+    # 3. Setup Initial State
     initial_state = {
         "messages": [HumanMessage(content=f"Let's generate the {agent_name}.")],
-        "project_name": "Unknown", 
+        "project_name": "Unknown",
         "project_path": project_path,
-        "templates_dir": "", 
+        "templates_dir": "",
         "current_phase": phase,
-        "instructions": ""
+        "instructions": "",
+        "ai_context": ai_context
     }
 
-    # 3. Run Graph
+    # 4. Run Graph
     graph = graph_factory(model)
     for output in graph.stream(initial_state):
         for key, value in output.items():

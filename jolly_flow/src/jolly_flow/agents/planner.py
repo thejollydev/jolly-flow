@@ -42,6 +42,7 @@ def planner_agent(state: ProjectState, model_id: str):
         "4. Identify any dependencies or risks. "
         "5. Do NOT just generate a generic list. Be specific to the features and tech stack described. "
         "6. IMPORTANT: You MUST follow the exact structure of the provided template below for the final output."
+        f"\n\n---\nPROJECT CONTEXT (from AI-CONTEXT.md):\n{state.get('ai_context', 'No context available')}"
         f"\n\n---\nREQUIREMENTS:\n{requirements_content}"
         f"\n\n---\nARCHITECTURE:\n{architecture_content}"
         f"\n\n---\nTEMPLATE: ROADMAP.md\n{roadmap_template}"

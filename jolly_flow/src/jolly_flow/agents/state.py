@@ -9,3 +9,4 @@ class ProjectState(TypedDict):
     project_path: str
     current_phase: str
     instructions: str
+    ai_context: str  # Content of AI-CONTEXT.md for context continuity

@@ -36,6 +36,7 @@ def architect_agent(state: ProjectState, model_id: str):
         "3. Ask the user which approach they prefer or if they have constraints. "
         "4. Once a direction is agreed upon, generate a draft of ARCHITECTURE.md and TECH-STACK.md. "
         "5. IMPORTANT: You MUST follow the exact structure of the provided templates below for the final output."
+        f"\n\n---\nPROJECT CONTEXT (from AI-CONTEXT.md):\n{state.get('ai_context', 'No context available')}"
         f"\n\n---\nEXISTING REQUIREMENTS:\n{requirements_content}"
         f"\n\n---\nTEMPLATE: ARCHITECTURE.md\n{arch_template}"
         f"\n\n---\nTEMPLATE: TECH-STACK.md\n{tech_template}"
