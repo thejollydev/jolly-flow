@@ -1,0 +1,211 @@
+---
+created: {{CREATED_DATE}}
+project: {{PROJECT_NAME}}
+phase: {{PHASE_NUMBER}}
+---
+# Phase {{PHASE_NUMBER}} Retrospective
+
+**Phase:** {{PHASE_NAME}}
+**Started:** {{PHASE_START_DATE}}
+**Completed:** {{PHASE_END_DATE}}
+**Duration:** {{ACTUAL_DURATION}} (estimated: {{ESTIMATED_DURATION}})
+
+**Auto-generated from daily journals on:** {{CREATED_DATE}}
+
+---
+
+## Phase Summary
+
+### What We Built
+
+{{PHASE_DELIVERABLES_SUMMARY}}
+
+### Original Goals vs. Actual Results
+
+**Original Goals:**
+{{ORIGINAL_GOALS}}
+
+**What We Actually Achieved:**
+{{ACTUAL_ACHIEVEMENTS}}
+
+**Variance Analysis:**
+{{VARIANCE_ANALYSIS}}
+
+---
+
+## What Went Well
+
+{{WHAT_WENT_WELL}}
+
+### Key Successes
+
+1. {{SUCCESS_1}}
+2. {{SUCCESS_2}}
+3. {{SUCCESS_3}}
+
+---
+
+## What Didn't Go Well
+
+{{WHAT_DIDNT_GO_WELL}}
+
+### Key Challenges
+
+1. {{CHALLENGE_1}}
+2. {{CHALLENGE_2}}
+3. {{CHALLENGE_3}}
+
+---
+
+## Lessons Learned
+
+### Technical Insights
+
+{{TECHNICAL_LESSONS}}
+
+### Process Insights
+
+{{PROCESS_LESSONS}}
+
+### Time Estimation Insights
+
+{{TIME_ESTIMATION_LESSONS}}
+
+---
+
+## Decisions Made During Phase
+
+{{DECISIONS_SUMMARY}}
+
+See [[DECISIONS]] for full ADRs.
+
+---
+
+## Blockers Encountered
+
+### Blocker 1: {{BLOCKER_1_NAME}}
+
+**How it impacted us:** {{BLOCKER_1_IMPACT}}
+**How we resolved it:** {{BLOCKER_1_RESOLUTION}}
+**Prevention for next time:** {{BLOCKER_1_PREVENTION}}
+
+### Blocker 2: {{BLOCKER_2_NAME}}
+
+**How it impacted us:** {{BLOCKER_2_IMPACT}}
+**How we resolved it:** {{BLOCKER_2_RESOLUTION}}
+**Prevention for next time:** {{BLOCKER_2_PREVENTION}}
+
+---
+
+## Metrics
+
+### Time Spent
+
+**Total hours:** {{TOTAL_HOURS}}
+**Breakdown:**
+{{TIME_BREAKDOWN}}
+
+### Productivity
+
+**Productive days:** {{PRODUCTIVE_DAYS}}
+**Blocked days:** {{BLOCKED_DAYS}}
+**Average daily progress:** {{AVERAGE_PROGRESS}}
+
+### Quality Metrics
+
+**Test coverage:** {{TEST_COVERAGE}}
+**Bugs found:** {{BUGS_FOUND}}
+**Bugs fixed:** {{BUGS_FIXED}}
+
+---
+
+## Technical Debt Introduced
+
+{{TECHNICAL_DEBT}}
+
+**Priority for addressing:**
+{{DEBT_PRIORITY}}
+
+---
+
+## Knowledge Gained
+
+### New Technologies/Patterns Learned
+
+{{KNOWLEDGE_GAINED}}
+
+### Resources That Helped
+
+{{HELPFUL_RESOURCES}}
+
+---
+
+## Recommendations for Next Phase
+
+### What to Keep Doing
+
+1. {{KEEP_DOING_1}}
+2. {{KEEP_DOING_2}}
+
+### What to Start Doing
+
+1. {{START_DOING_1}}
+2. {{START_DOING_2}}
+
+### What to Stop Doing
+
+1. {{STOP_DOING_1}}
+2. {{STOP_DOING_2}}
+
+---
+
+## Impact on Future Phases
+
+### Changes to Roadmap
+
+{{ROADMAP_CHANGES}}
+
+### Risks Identified for Future Phases
+
+{{FUTURE_RISKS}}
+
+### Opportunities Identified
+
+{{FUTURE_OPPORTUNITIES}}
+
+---
+
+## Action Items
+
+### Before Starting Next Phase
+
+- [ ] {{ACTION_1}}
+- [ ] {{ACTION_2}}
+- [ ] {{ACTION_3}}
+
+### Technical Improvements Needed
+
+- [ ] {{TECH_IMPROVEMENT_1}}
+- [ ] {{TECH_IMPROVEMENT_2}}
+
+---
+
+## Journal Reference
+
+This retrospective was generated from daily journals:
+
+{{JOURNAL_LINKS}}
+
+---
+
+## Related Documents
+
+- [[phase-{{PHASE_NUMBER}}/overview]] - Original phase plan
+- [[phase-{{PHASE_NUMBER}}/checklist]] - Acceptance criteria
+- [[ROADMAP]] - Update with insights from this retrospective
+- [[AI-CONTEXT]] - Update with current state
+
+---
+
+**Retrospective generated:** {{CREATED_DATE}}
+**Next phase:** {{NEXT_PHASE_NAME}}

@@ -1,0 +1,186 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Decision Log
+
+**Created:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+
+---
+
+## Overview
+
+This document tracks all significant technical and architectural decisions made during the project. Each decision follows the Architecture Decision Record (ADR) format.
+
+---
+
+## Decision Index
+
+| ID | Title | Date | Status |
+|----|-------|------|--------|
+{{DECISION_INDEX_TABLE}}
+
+---
+
+## ADR-001: {{DECISION_1_TITLE}}
+
+**Date:** {{DECISION_1_DATE}}
+**Status:** {{DECISION_1_STATUS}}
+**Deciders:** {{DECISION_1_DECIDERS}}
+
+### Context
+
+{{DECISION_1_CONTEXT}}
+
+### Decision
+
+{{DECISION_1_DECISION}}
+
+### Rationale
+
+{{DECISION_1_RATIONALE}}
+
+### Consequences
+
+**Positive:**
+{{DECISION_1_POSITIVE_CONSEQUENCES}}
+
+**Negative:**
+{{DECISION_1_NEGATIVE_CONSEQUENCES}}
+
+**Neutral:**
+{{DECISION_1_NEUTRAL_CONSEQUENCES}}
+
+### Alternatives Considered
+
+#### Alternative 1: {{DECISION_1_ALT_1_NAME}}
+
+{{DECISION_1_ALT_1_DESCRIPTION}}
+
+**Why we didn't choose it:**
+{{DECISION_1_ALT_1_REJECTION}}
+
+#### Alternative 2: {{DECISION_1_ALT_2_NAME}}
+
+{{DECISION_1_ALT_2_DESCRIPTION}}
+
+**Why we didn't choose it:**
+{{DECISION_1_ALT_2_REJECTION}}
+
+### References
+
+{{DECISION_1_REFERENCES}}
+
+---
+
+## ADR-002: {{DECISION_2_TITLE}}
+
+**Date:** {{DECISION_2_DATE}}
+**Status:** {{DECISION_2_STATUS}}
+**Deciders:** {{DECISION_2_DECIDERS}}
+
+### Context
+
+{{DECISION_2_CONTEXT}}
+
+### Decision
+
+{{DECISION_2_DECISION}}
+
+### Rationale
+
+{{DECISION_2_RATIONALE}}
+
+### Consequences
+
+**Positive:**
+{{DECISION_2_POSITIVE_CONSEQUENCES}}
+
+**Negative:**
+{{DECISION_2_NEGATIVE_CONSEQUENCES}}
+
+**Neutral:**
+{{DECISION_2_NEUTRAL_CONSEQUENCES}}
+
+### Alternatives Considered
+
+{{DECISION_2_ALTERNATIVES}}
+
+### References
+
+{{DECISION_2_REFERENCES}}
+
+---
+
+{{ADDITIONAL_DECISIONS}}
+
+---
+
+## Decision Status Definitions
+
+**Proposed:** Decision proposed but not yet finalized
+**Accepted:** Decision accepted and being implemented
+**Deprecated:** Decision superseded by a later decision
+**Superseded:** Replaced by ADR-XXX (link to replacing decision)
+
+---
+
+## Template for New Decisions
+
+```markdown
+## ADR-XXX: [Decision Title]
+
+**Date:** YYYY-MM-DD
+**Status:** Proposed/Accepted/Deprecated/Superseded
+**Deciders:** [Names or roles]
+
+### Context
+
+[What is the issue we're trying to solve? What factors are influencing this decision?]
+
+### Decision
+
+[What is the change we're proposing/making?]
+
+### Rationale
+
+[Why are we making this decision? What are the driving factors?]
+
+### Consequences
+
+**Positive:**
+- [Good consequence]
+
+**Negative:**
+- [Bad consequence or trade-off]
+
+**Neutral:**
+- [Neutral consequence]
+
+### Alternatives Considered
+
+#### Alternative 1: [Name]
+
+[Description]
+
+**Why we didn't choose it:**
+[Reason]
+
+### References
+
+- [Links to related documents, discussions, research]
+```
+
+---
+
+## Related Documents
+
+- [[ARCHITECTURE]] - How these decisions affect the architecture
+- [[TECH-STACK]] - Technology decisions
+- [[ROADMAP]] - How decisions impact the roadmap
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

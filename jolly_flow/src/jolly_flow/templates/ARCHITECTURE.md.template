@@ -1,0 +1,274 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Architecture
+
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+**Architecture Status:** {{ARCHITECTURE_STATUS}}
+
+---
+
+## Architecture Overview
+
+### System Summary
+
+{{SYSTEM_SUMMARY}}
+
+### Architectural Style
+
+{{ARCHITECTURAL_STYLE}}
+
+**Rationale:** {{ARCHITECTURE_RATIONALE}}
+
+---
+
+## High-Level Architecture
+
+```
+{{ARCHITECTURE_DIAGRAM_ASCII}}
+```
+
+### Component Overview
+
+{{COMPONENT_OVERVIEW}}
+
+---
+
+## Component Details
+
+### Component 1: {{COMPONENT_1_NAME}}
+
+**Purpose:** {{COMPONENT_1_PURPOSE}}
+
+**Responsibilities:**
+{{COMPONENT_1_RESPONSIBILITIES}}
+
+**Technologies:**
+{{COMPONENT_1_TECH}}
+
+**Interfaces:**
+{{COMPONENT_1_INTERFACES}}
+
+**Dependencies:**
+{{COMPONENT_1_DEPENDENCIES}}
+
+---
+
+### Component 2: {{COMPONENT_2_NAME}}
+
+**Purpose:** {{COMPONENT_2_PURPOSE}}
+
+**Responsibilities:**
+{{COMPONENT_2_RESPONSIBILITIES}}
+
+**Technologies:**
+{{COMPONENT_2_TECH}}
+
+**Interfaces:**
+{{COMPONENT_2_INTERFACES}}
+
+**Dependencies:**
+{{COMPONENT_2_DEPENDENCIES}}
+
+---
+
+{{ADDITIONAL_COMPONENTS}}
+
+---
+
+## Data Architecture
+
+### Data Flow
+
+```
+{{DATA_FLOW_DIAGRAM}}
+```
+
+**Description:** {{DATA_FLOW_DESCRIPTION}}
+
+### Data Storage
+
+**Primary Database:** {{PRIMARY_DATABASE}}
+**Rationale:** {{DATABASE_RATIONALE}}
+
+**Schema Design:**
+{{SCHEMA_DESIGN}}
+
+**Data Partitioning:**
+{{DATA_PARTITIONING}}
+
+**Backup Strategy:**
+{{BACKUP_STRATEGY}}
+
+---
+
+## Integration Architecture
+
+### External Systems
+
+{{EXTERNAL_INTEGRATIONS}}
+
+### API Design
+
+**API Style:** {{API_STYLE}}
+
+**Endpoints:**
+{{API_ENDPOINTS}}
+
+**Authentication:**
+{{API_AUTH}}
+
+**Rate Limiting:**
+{{API_RATE_LIMITING}}
+
+---
+
+## Security Architecture
+
+### Authentication
+
+{{AUTH_DESIGN}}
+
+### Authorization
+
+{{AUTHZ_DESIGN}}
+
+### Data Encryption
+
+**At Rest:** {{ENCRYPTION_REST}}
+**In Transit:** {{ENCRYPTION_TRANSIT}}
+
+### Security Monitoring
+
+{{SECURITY_MONITORING}}
+
+---
+
+## Deployment Architecture
+
+### Infrastructure
+
+**Hosting:** {{HOSTING_PLATFORM}}
+**Rationale:** {{HOSTING_RATIONALE}}
+
+### Environment Strategy
+
+{{ENVIRONMENT_STRATEGY}}
+
+### Deployment Pipeline
+
+```
+{{DEPLOYMENT_PIPELINE_DIAGRAM}}
+```
+
+**Description:** {{DEPLOYMENT_DESCRIPTION}}
+
+---
+
+## Scalability & Performance
+
+### Scalability Strategy
+
+{{SCALABILITY_STRATEGY}}
+
+### Performance Optimizations
+
+{{PERFORMANCE_OPTIMIZATIONS}}
+
+### Caching Strategy
+
+{{CACHING_STRATEGY}}
+
+### Load Balancing
+
+{{LOAD_BALANCING}}
+
+---
+
+## Reliability & Resilience
+
+### High Availability
+
+{{HIGH_AVAILABILITY}}
+
+### Disaster Recovery
+
+**RTO:** {{RECOVERY_TIME_OBJECTIVE}}
+**RPO:** {{RECOVERY_POINT_OBJECTIVE}}
+
+**DR Strategy:** {{DR_STRATEGY}}
+
+### Error Handling
+
+{{ERROR_HANDLING}}
+
+### Monitoring & Alerting
+
+{{MONITORING_STRATEGY}}
+
+---
+
+## Architecture Decision Records (ADRs)
+
+### ADR-1: {{ADR_1_TITLE}}
+
+**Date:** {{ADR_1_DATE}}
+**Status:** {{ADR_1_STATUS}}
+
+**Context:**
+{{ADR_1_CONTEXT}}
+
+**Decision:**
+{{ADR_1_DECISION}}
+
+**Consequences:**
+{{ADR_1_CONSEQUENCES}}
+
+---
+
+### ADR-2: {{ADR_2_TITLE}}
+
+**Date:** {{ADR_2_DATE}}
+**Status:** {{ADR_2_STATUS}}
+
+**Context:**
+{{ADR_2_CONTEXT}}
+
+**Decision:**
+{{ADR_2_DECISION}}
+
+**Consequences:**
+{{ADR_2_CONSEQUENCES}}
+
+---
+
+{{ADDITIONAL_ADRS}}
+
+---
+
+## Technology Constraints
+
+{{TECHNOLOGY_CONSTRAINTS}}
+
+---
+
+## Future Architecture Considerations
+
+{{FUTURE_CONSIDERATIONS}}
+
+---
+
+## Related Documents
+
+- [[PROJECT-OVERVIEW]] - Project context
+- [[REQUIREMENTS]] - What this architecture must support
+- [[TECH-STACK]] - Specific technology choices
+- [[DECISIONS]] - Additional decision records
+
+---
+
+**Architecture Status:** {{ARCHITECTURE_STATUS}}
+**Last Reviewed:** {{MODIFIED_DATE}}

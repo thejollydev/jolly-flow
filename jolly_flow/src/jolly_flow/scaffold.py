@@ -3,8 +3,9 @@ import shutil
 import subprocess
 from pathlib import Path
 from jinja2 import Template
+import importlib.resources as pkg_resources
 
-def create_project(name: str, vault_root: str, projects_root: str, templates_dir: str):
+def create_project(name: str, vault_root: str, projects_root: str):
     project_slug = name.lower().replace(' ', '-')
     vault_path = Path(vault_root) / project_slug
     repo_path = Path(projects_root) / project_slug
@@ -27,31 +28,40 @@ def create_project(name: str, vault_root: str, projects_root: str, templates_dir
         print(f'⚠️ Git init failed: {e}')
 
     # 3. Copy & Render Templates
-    templates = ['AI-CONTEXT.md.template', 'PROJECT-OVERVIEW.md.template']
+    # We use importlib to find the templates within the package
+    template_names = ['AI-CONTEXT.md.template', 'PROJECT-OVERVIEW.md.template']
     
-    for t_name in templates:
-        t_path = Path(templates_dir) / t_name
-        if not t_path.exists():
-            continue
+    # Locate the templates directory relative to the package
+    # This assumes 'jolly_flow.templates' is a valid package/module
+    
+    for t_name in template_names:
+        try:
+            # Using joinpath from files() (Python 3.9+)
+            template_path = pkg_resources.files('jolly_flow.templates').joinpath(t_name)
+            
+            if not template_path.is_file():
+                 print(f'⚠️ Template not found in package: {t_name}')
+                 continue
 
-        with open(t_path, 'r') as f:
-            template_content = f.read()
+            template_content = template_path.read_text(encoding='utf-8')
 
-        template = Template(template_content)
-        rendered = template.render(
-            PROJECT_NAME=name,
-            PROJECT_SLUG=project_slug,
-            CREATED_DATE='2026-01-24',
-            MODIFIED_DATE='2026-01-24',
-            PROJECT_STATUS='Active',
-            CURRENT_PHASE='Phase 0',
-            VAULT_PATH=str(vault_path),
-            REPO_PATH=str(repo_path)
-        )
+            template = Template(template_content)
+            rendered = template.render(
+                PROJECT_NAME=name,
+                PROJECT_SLUG=project_slug,
+                CREATED_DATE='2026-01-24',
+                MODIFIED_DATE='2026-01-24',
+                PROJECT_STATUS='Active',
+                CURRENT_PHASE='Phase 0',
+                VAULT_PATH=str(vault_path),
+                REPO_PATH=str(repo_path)
+            )
 
-        dest_name = t_name.replace('.template', '')
-        with open(vault_path / dest_name, 'w') as f:
-            f.write(rendered)
+            dest_name = t_name.replace('.template', '')
+            with open(vault_path / dest_name, 'w') as f:
+                f.write(rendered)
+        except Exception as e:
+             print(f'⚠️ Failed to render template {t_name}: {e}')
 
     # 4. Create .jolly-sync.yaml
     sync_config = f"""vault_root: "{vault_path}"

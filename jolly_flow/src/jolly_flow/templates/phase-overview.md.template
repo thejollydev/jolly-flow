@@ -1,0 +1,192 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+phase: {{PHASE_NUMBER}}
+---
+# Phase {{PHASE_NUMBER}}: {{PHASE_NAME}}
+
+**Generated:** {{CREATED_DATE}}
+**Phase Status:** {{PHASE_STATUS}}
+**Started:** {{PHASE_START_DATE}}
+**Target Completion:** {{PHASE_TARGET_DATE}}
+
+---
+
+## Phase Overview
+
+### What We're Building
+
+{{PHASE_DESCRIPTION}}
+
+### Why This Phase
+
+{{PHASE_RATIONALE}}
+
+### Success Criteria
+
+{{PHASE_SUCCESS_CRITERIA}}
+
+---
+
+## Phase Objectives
+
+### Primary Objectives
+
+1. {{PRIMARY_OBJECTIVE_1}}
+2. {{PRIMARY_OBJECTIVE_2}}
+3. {{PRIMARY_OBJECTIVE_3}}
+
+### Secondary Objectives
+
+1. {{SECONDARY_OBJECTIVE_1}}
+2. {{SECONDARY_OBJECTIVE_2}}
+
+---
+
+## Deliverables
+
+### Must Have
+
+- [ ] {{MUST_HAVE_1}}
+- [ ] {{MUST_HAVE_2}}
+- [ ] {{MUST_HAVE_3}}
+
+### Should Have
+
+- [ ] {{SHOULD_HAVE_1}}
+- [ ] {{SHOULD_HAVE_2}}
+
+### Nice to Have
+
+- [ ] {{NICE_TO_HAVE_1}}
+
+---
+
+## Implementation Approach
+
+### Strategy
+
+{{IMPLEMENTATION_STRATEGY}}
+
+### Key Steps
+
+1. {{KEY_STEP_1}}
+2. {{KEY_STEP_2}}
+3. {{KEY_STEP_3}}
+
+### Dependencies
+
+**Prerequisites from previous phases:**
+{{PREREQUISITES}}
+
+**External dependencies:**
+{{EXTERNAL_DEPENDENCIES}}
+
+---
+
+## Technical Details
+
+### Components to Build
+
+{{COMPONENTS_TO_BUILD}}
+
+### Technologies Used
+
+{{PHASE_TECHNOLOGIES}}
+
+### Architecture Changes
+
+{{ARCHITECTURE_CHANGES}}
+
+---
+
+## Testing Strategy
+
+### Unit Tests
+
+{{UNIT_TEST_PLAN}}
+
+### Integration Tests
+
+{{INTEGRATION_TEST_PLAN}}
+
+### Acceptance Tests
+
+{{ACCEPTANCE_TEST_PLAN}}
+
+---
+
+## Risks & Mitigation
+
+### Risk 1: {{RISK_1_NAME}}
+
+**Probability:** {{RISK_1_PROBABILITY}}
+**Impact:** {{RISK_1_IMPACT}}
+
+**Mitigation:**
+{{RISK_1_MITIGATION}}
+
+### Risk 2: {{RISK_2_NAME}}
+
+**Probability:** {{RISK_2_PROBABILITY}}
+**Impact:** {{RISK_2_IMPACT}}
+
+**Mitigation:**
+{{RISK_2_MITIGATION}}
+
+---
+
+## Resources
+
+### Learning Resources
+
+{{LEARNING_RESOURCES}}
+
+### Reference Documentation
+
+{{REFERENCE_DOCS}}
+
+---
+
+## Phase Artifacts
+
+### Documentation
+
+- [[phase-{{PHASE_NUMBER}}/checklist]] - Acceptance criteria checklist
+- [[phase-{{PHASE_NUMBER}}/implementation-guide]] - Step-by-step implementation guide
+
+### Code
+
+{{CODE_ARTIFACTS}}
+
+### Tests
+
+{{TEST_ARTIFACTS}}
+
+---
+
+## Daily Journal
+
+Track your progress with: `jolly-flow journal`
+
+Journals will be saved to: `journals/phase-{{PHASE_NUMBER}}/YYYY-MM-DD.md`
+
+---
+
+## Notes
+
+{{PHASE_NOTES}}
+
+---
+
+## Related Documents
+
+- [[ROADMAP]] - Overall project roadmap
+- [[ARCHITECTURE]] - System architecture
+- [[AI-CONTEXT]] - Current project state
+
+---
+
+**Phase Status:** {{PHASE_STATUS}}
+**Last Updated:** {{MODIFIED_DATE}}

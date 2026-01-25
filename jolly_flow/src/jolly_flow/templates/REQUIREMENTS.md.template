@@ -1,0 +1,229 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Requirements
+
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+**Status:** {{REQUIREMENTS_STATUS}}
+
+---
+
+## Functional Requirements
+
+### Core Features
+
+#### FR-1: {{FEATURE_1_NAME}}
+
+**Description:** {{FEATURE_1_DESCRIPTION}}
+
+**User Stories:**
+{{FEATURE_1_USER_STORIES}}
+
+**Acceptance Criteria:**
+{{FEATURE_1_ACCEPTANCE_CRITERIA}}
+
+**Priority:** {{FEATURE_1_PRIORITY}}
+
+---
+
+#### FR-2: {{FEATURE_2_NAME}}
+
+**Description:** {{FEATURE_2_DESCRIPTION}}
+
+**User Stories:**
+{{FEATURE_2_USER_STORIES}}
+
+**Acceptance Criteria:**
+{{FEATURE_2_ACCEPTANCE_CRITERIA}}
+
+**Priority:** {{FEATURE_2_PRIORITY}}
+
+---
+
+{{ADDITIONAL_FUNCTIONAL_REQUIREMENTS}}
+
+---
+
+## Non-Functional Requirements
+
+### Performance
+
+**NFR-1: Response Time**
+{{PERFORMANCE_RESPONSE_TIME}}
+
+**NFR-2: Throughput**
+{{PERFORMANCE_THROUGHPUT}}
+
+**NFR-3: Resource Usage**
+{{PERFORMANCE_RESOURCES}}
+
+### Scalability
+
+**NFR-4: Concurrent Users**
+{{SCALABILITY_USERS}}
+
+**NFR-5: Data Volume**
+{{SCALABILITY_DATA}}
+
+### Security
+
+**NFR-6: Authentication**
+{{SECURITY_AUTH}}
+
+**NFR-7: Authorization**
+{{SECURITY_AUTHZ}}
+
+**NFR-8: Data Protection**
+{{SECURITY_DATA}}
+
+### Reliability
+
+**NFR-9: Uptime**
+{{RELIABILITY_UPTIME}}
+
+**NFR-10: Error Handling**
+{{RELIABILITY_ERRORS}}
+
+**NFR-11: Data Integrity**
+{{RELIABILITY_DATA}}
+
+### Usability
+
+**NFR-12: User Experience**
+{{USABILITY_UX}}
+
+**NFR-13: Accessibility**
+{{USABILITY_ACCESSIBILITY}}
+
+### Maintainability
+
+**NFR-14: Code Quality**
+{{MAINTAINABILITY_CODE}}
+
+**NFR-15: Documentation**
+{{MAINTAINABILITY_DOCS}}
+
+---
+
+## Use Cases
+
+### UC-1: {{USE_CASE_1_NAME}}
+
+**Actor:** {{USE_CASE_1_ACTOR}}
+
+**Preconditions:**
+{{USE_CASE_1_PRECONDITIONS}}
+
+**Flow:**
+{{USE_CASE_1_FLOW}}
+
+**Postconditions:**
+{{USE_CASE_1_POSTCONDITIONS}}
+
+**Alternative Flows:**
+{{USE_CASE_1_ALTERNATIVES}}
+
+---
+
+### UC-2: {{USE_CASE_2_NAME}}
+
+**Actor:** {{USE_CASE_2_ACTOR}}
+
+**Preconditions:**
+{{USE_CASE_2_PRECONDITIONS}}
+
+**Flow:**
+{{USE_CASE_2_FLOW}}
+
+**Postconditions:**
+{{USE_CASE_2_POSTCONDITIONS}}
+
+**Alternative Flows:**
+{{USE_CASE_2_ALTERNATIVES}}
+
+---
+
+{{ADDITIONAL_USE_CASES}}
+
+---
+
+## Data Requirements
+
+### Data Entities
+
+{{DATA_ENTITIES}}
+
+### Data Relationships
+
+{{DATA_RELATIONSHIPS}}
+
+### Data Constraints
+
+{{DATA_CONSTRAINTS}}
+
+---
+
+## Integration Requirements
+
+### External Systems
+
+{{EXTERNAL_SYSTEMS}}
+
+### APIs
+
+{{API_REQUIREMENTS}}
+
+### Third-Party Services
+
+{{THIRD_PARTY_SERVICES}}
+
+---
+
+## Constraints
+
+### Technical Constraints
+
+{{TECHNICAL_CONSTRAINTS}}
+
+### Business Constraints
+
+{{BUSINESS_CONSTRAINTS}}
+
+### Regulatory Constraints
+
+{{REGULATORY_CONSTRAINTS}}
+
+---
+
+## Assumptions
+
+{{ASSUMPTIONS}}
+
+---
+
+## Dependencies
+
+{{DEPENDENCIES}}
+
+---
+
+## Open Questions
+
+{{OPEN_QUESTIONS}}
+
+---
+
+## Related Documents
+
+- [[PROJECT-OVERVIEW]] - Executive summary and context
+- [[ARCHITECTURE]] - How these requirements will be implemented
+- [[TECH-STACK]] - Technology choices to meet requirements
+- [[ROADMAP]] - Implementation timeline
+
+---
+
+**Requirements Status:** {{REQUIREMENTS_STATUS}}
+**Last Reviewed:** {{MODIFIED_DATE}}

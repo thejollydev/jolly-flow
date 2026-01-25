@@ -5,7 +5,7 @@ from rich.console import Console
 from rich.table import Table
 from .sync.sync import sync_files
 from .scaffold import create_project
-from .agents.orchestrator import create_requirements_graph, create_architecture_graph
+from .agents.orchestrator import create_requirements_graph, create_architecture_graph, create_roadmap_graph, create_phase_guide_graph
 from langchain_core.messages import HumanMessage
 
 app = typer.Typer(help="The Jolly Method CLI")
@@ -15,11 +15,10 @@ console = Console()
 def new_project(
     name: str = typer.Argument(..., help="Name of the project"),
     vault_root: str = typer.Option("/home/joseph/GoogleDrive/Obsidian/JollyProjects", help="Root directory for private vaults"),
-    projects_root: str = typer.Option("/home/joseph/GoogleDrive/Projects", help="Root directory for public repositories"),
-    templates_dir: str = typer.Option("/home/joseph/GoogleDrive/Obsidian/TheJollyMethod/templates", help="Directory containing Jinja2 templates")
+    projects_root: str = typer.Option("/home/joseph/GoogleDrive/Projects", help="Root directory for public repositories")
 ):
     """Scaffolds a new project."""
-    create_project(name, vault_root, projects_root, templates_dir)
+    create_project(name, vault_root, projects_root)
 
 @app.command()
 def sync(
@@ -45,7 +44,24 @@ def generate_architecture(
     """Runs the Architect Agent (Phase 0)."""
     run_agent_workflow(project_path, model, create_architecture_graph, "Architecture")
 
-def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name: str):
+@app.command()
+def generate_roadmap(
+    project_path: str = typer.Option(".", help="Path to the project vault"),
+    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+):
+    """Runs the Planner Agent (Phase 0)."""
+    run_agent_workflow(project_path, model, create_roadmap_graph, "Roadmap")
+
+@app.command()
+def start_phase(
+    phase: str = typer.Argument(..., help="Phase number to start"),
+    project_path: str = typer.Option(".", help="Path to the project vault"),
+    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+):
+    """Generates detailed guides for a specific phase."""
+    run_agent_workflow(project_path, model, create_phase_guide_graph, f"Phase {phase} Guide", phase)
+
+def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name: str, phase: str = "0"):
     # 1. Load context
     context_path = Path(project_path) / "AI-CONTEXT.md"
     if not context_path.exists():
@@ -54,10 +70,11 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
 
     # 2. Setup Initial State
     initial_state = {
-        "messages": [HumanMessage(content=f"Let's start the {agent_name} process.")],
-        "project_name": "Unknown", # Should ideally be parsed from AI-CONTEXT
+        "messages": [HumanMessage(content=f"Let's generate the {agent_name}.")],
+        "project_name": "Unknown", 
         "project_path": project_path,
-        "current_phase": "Phase 0",
+        "templates_dir": "", 
+        "current_phase": phase,
         "instructions": ""
     }
 

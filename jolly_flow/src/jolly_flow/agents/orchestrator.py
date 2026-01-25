@@ -2,6 +2,8 @@ from langgraph.graph import StateGraph, END
 from .state import ProjectState
 from .requirements import requirements_agent
 from .architect import architect_agent
+from .planner import planner_agent
+from .phase_guide import phase_guide_agent
 from .human import human_review
 
 def should_continue(state: ProjectState):
@@ -28,6 +30,32 @@ def create_architecture_graph(model_id: str):
     
     def agent_node(state):
         return architect_agent(state, model_id)
+
+    workflow.add_node('agent', agent_node)
+    workflow.add_node('human', human_review)
+    workflow.set_entry_point('agent')
+    workflow.add_edge('agent', 'human')
+    workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', END: END})
+    return workflow.compile()
+
+def create_roadmap_graph(model_id: str):
+    workflow = StateGraph(ProjectState)
+    
+    def agent_node(state):
+        return planner_agent(state, model_id)
+
+    workflow.add_node('agent', agent_node)
+    workflow.add_node('human', human_review)
+    workflow.set_entry_point('agent')
+    workflow.add_edge('agent', 'human')
+    workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', END: END})
+    return workflow.compile()
+
+def create_phase_guide_graph(model_id: str):
+    workflow = StateGraph(ProjectState)
+    
+    def agent_node(state):
+        return phase_guide_agent(state, model_id)
 
     workflow.add_node('agent', agent_node)
     workflow.add_node('human', human_review)

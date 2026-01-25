@@ -1,0 +1,259 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+phase: {{PHASE_NUMBER}}
+---
+# Phase {{PHASE_NUMBER}} - Implementation Guide
+
+**Phase:** {{PHASE_NAME}}
+**Generated:** {{CREATED_DATE}}
+**Estimated Duration:** {{ESTIMATED_DURATION}}
+
+---
+
+## Before You Start
+
+### Prerequisites
+
+- [ ] {{PREREQUISITE_1}}
+- [ ] {{PREREQUISITE_2}}
+- [ ] {{PREREQUISITE_3}}
+
+### Required Tools
+
+{{REQUIRED_TOOLS}}
+
+### Required Knowledge
+
+{{REQUIRED_KNOWLEDGE}}
+
+---
+
+## Implementation Steps
+
+### Step 1: {{STEP_1_NAME}}
+
+**Estimated time:** {{STEP_1_TIME}}
+
+**What you're building:**
+{{STEP_1_DESCRIPTION}}
+
+**Why this step:**
+{{STEP_1_RATIONALE}}
+
+#### Tasks
+
+1. {{STEP_1_TASK_1}}
+2. {{STEP_1_TASK_2}}
+3. {{STEP_1_TASK_3}}
+
+#### Commands
+
+```bash
+{{STEP_1_COMMANDS}}
+```
+
+#### Expected Outcome
+
+{{STEP_1_EXPECTED_OUTCOME}}
+
+#### Verification
+
+```bash
+{{STEP_1_VERIFICATION_COMMANDS}}
+```
+
+**Expected output:**
+```
+{{STEP_1_EXPECTED_OUTPUT}}
+```
+
+#### Troubleshooting
+
+**Problem:** {{STEP_1_COMMON_ISSUE_1}}
+**Solution:** {{STEP_1_SOLUTION_1}}
+
+---
+
+### Step 2: {{STEP_2_NAME}}
+
+**Estimated time:** {{STEP_2_TIME}}
+
+**What you're building:**
+{{STEP_2_DESCRIPTION}}
+
+**Why this step:**
+{{STEP_2_RATIONALE}}
+
+#### Tasks
+
+1. {{STEP_2_TASK_1}}
+2. {{STEP_2_TASK_2}}
+3. {{STEP_2_TASK_3}}
+
+#### Code Example
+
+```{{STEP_2_LANGUAGE}}
+{{STEP_2_CODE_EXAMPLE}}
+```
+
+#### Expected Outcome
+
+{{STEP_2_EXPECTED_OUTCOME}}
+
+#### Verification
+
+{{STEP_2_VERIFICATION}}
+
+#### Troubleshooting
+
+**Problem:** {{STEP_2_COMMON_ISSUE_1}}
+**Solution:** {{STEP_2_SOLUTION_1}}
+
+---
+
+### Step 3: {{STEP_3_NAME}}
+
+**Estimated time:** {{STEP_3_TIME}}
+
+**What you're building:**
+{{STEP_3_DESCRIPTION}}
+
+#### Tasks
+
+{{STEP_3_TASKS}}
+
+#### Implementation
+
+{{STEP_3_IMPLEMENTATION_DETAILS}}
+
+#### Verification
+
+{{STEP_3_VERIFICATION}}
+
+---
+
+{{ADDITIONAL_STEPS}}
+
+---
+
+## Testing Your Implementation
+
+### Unit Tests
+
+**Create test file:** `{{UNIT_TEST_FILE_PATH}}`
+
+```{{TEST_LANGUAGE}}
+{{UNIT_TEST_TEMPLATE}}
+```
+
+**Run tests:**
+```bash
+{{RUN_UNIT_TESTS_COMMAND}}
+```
+
+### Integration Tests
+
+{{INTEGRATION_TEST_GUIDE}}
+
+### Manual Testing
+
+1. {{MANUAL_TEST_1}}
+2. {{MANUAL_TEST_2}}
+3. {{MANUAL_TEST_3}}
+
+---
+
+## Common Issues & Solutions
+
+### Issue 1: {{COMMON_ISSUE_1_NAME}}
+
+**Symptoms:**
+{{COMMON_ISSUE_1_SYMPTOMS}}
+
+**Cause:**
+{{COMMON_ISSUE_1_CAUSE}}
+
+**Solution:**
+{{COMMON_ISSUE_1_SOLUTION}}
+
+---
+
+### Issue 2: {{COMMON_ISSUE_2_NAME}}
+
+**Symptoms:**
+{{COMMON_ISSUE_2_SYMPTOMS}}
+
+**Cause:**
+{{COMMON_ISSUE_2_CAUSE}}
+
+**Solution:**
+{{COMMON_ISSUE_2_SOLUTION}}
+
+---
+
+## Phase Completion
+
+### Before Marking Complete
+
+1. Review [[phase-{{PHASE_NUMBER}}/checklist|acceptance criteria checklist]]
+2. Ensure all tests passing
+3. Update documentation
+4. Run: `jolly-flow complete-phase {{PHASE_NUMBER}}`
+
+### What Happens Next
+
+{{NEXT_STEPS}}
+
+---
+
+## Daily Progress Tracking
+
+Remember to log your progress:
+
+```bash
+jolly-flow journal
+```
+
+Document:
+- What you worked on today
+- What worked well
+- What didn't work
+- Blockers or questions
+- Decisions made
+
+---
+
+## Additional Resources
+
+### Documentation
+
+{{ADDITIONAL_DOCUMENTATION}}
+
+### Tutorials
+
+{{HELPFUL_TUTORIALS}}
+
+### Reference Code
+
+{{REFERENCE_CODE_EXAMPLES}}
+
+---
+
+## Notes
+
+{{IMPLEMENTATION_NOTES}}
+
+---
+
+## Related Documents
+
+- [[phase-{{PHASE_NUMBER}}/overview]] - Phase objectives
+- [[phase-{{PHASE_NUMBER}}/checklist]] - Completion criteria
+- [[ARCHITECTURE]] - System architecture
+- [[TECH-STACK]] - Technologies used
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

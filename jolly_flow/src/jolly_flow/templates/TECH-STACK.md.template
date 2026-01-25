@@ -1,0 +1,288 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Technology Stack
+
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+
+---
+
+## Stack Overview
+
+{{STACK_SUMMARY}}
+
+---
+
+## Frontend
+
+### Framework/Library
+
+**Choice:** {{FRONTEND_FRAMEWORK}}
+**Version:** {{FRONTEND_VERSION}}
+
+**Why we chose it:**
+{{FRONTEND_RATIONALE}}
+
+**Alternatives considered:**
+{{FRONTEND_ALTERNATIVES}}
+
+### UI Components
+
+**Choice:** {{UI_LIBRARY}}
+
+**Why we chose it:**
+{{UI_RATIONALE}}
+
+### State Management
+
+**Choice:** {{STATE_MANAGEMENT}}
+
+**Why we chose it:**
+{{STATE_RATIONALE}}
+
+### Styling
+
+**Choice:** {{STYLING_APPROACH}}
+
+**Why we chose it:**
+{{STYLING_RATIONALE}}
+
+---
+
+## Backend
+
+### Runtime/Framework
+
+**Choice:** {{BACKEND_RUNTIME}} + {{BACKEND_FRAMEWORK}}
+**Version:** {{BACKEND_VERSION}}
+
+**Why we chose it:**
+{{BACKEND_RATIONALE}}
+
+**Alternatives considered:**
+{{BACKEND_ALTERNATIVES}}
+
+### API Framework
+
+**Choice:** {{API_FRAMEWORK}}
+
+**Why we chose it:**
+{{API_RATIONALE}}
+
+---
+
+## Database
+
+### Primary Database
+
+**Choice:** {{PRIMARY_DATABASE}}
+**Version:** {{DATABASE_VERSION}}
+
+**Why we chose it:**
+{{DATABASE_RATIONALE}}
+
+**Alternatives considered:**
+{{DATABASE_ALTERNATIVES}}
+
+### Caching
+
+**Choice:** {{CACHE_TECHNOLOGY}}
+
+**Why we chose it:**
+{{CACHE_RATIONALE}}
+
+### Search (if applicable)
+
+**Choice:** {{SEARCH_TECHNOLOGY}}
+
+**Why we chose it:**
+{{SEARCH_RATIONALE}}
+
+---
+
+## Infrastructure
+
+### Hosting Platform
+
+**Choice:** {{HOSTING_PLATFORM}}
+
+**Why we chose it:**
+{{HOSTING_RATIONALE}}
+
+### Container Orchestration
+
+**Choice:** {{ORCHESTRATION}}
+
+**Why we chose it:**
+{{ORCHESTRATION_RATIONALE}}
+
+### CI/CD
+
+**Choice:** {{CICD_PLATFORM}}
+
+**Why we chose it:**
+{{CICD_RATIONALE}}
+
+---
+
+## DevOps & Observability
+
+### Monitoring
+
+**Choice:** {{MONITORING_TOOL}}
+
+**Why we chose it:**
+{{MONITORING_RATIONALE}}
+
+### Logging
+
+**Choice:** {{LOGGING_TOOL}}
+
+**Why we chose it:**
+{{LOGGING_RATIONALE}}
+
+### Error Tracking
+
+**Choice:** {{ERROR_TRACKING}}
+
+**Why we chose it:**
+{{ERROR_TRACKING_RATIONALE}}
+
+---
+
+## Testing
+
+### Unit Testing
+
+**Choice:** {{UNIT_TEST_FRAMEWORK}}
+
+**Why we chose it:**
+{{UNIT_TEST_RATIONALE}}
+
+### Integration Testing
+
+**Choice:** {{INTEGRATION_TEST_FRAMEWORK}}
+
+**Why we chose it:**
+{{INTEGRATION_TEST_RATIONALE}}
+
+### E2E Testing
+
+**Choice:** {{E2E_TEST_FRAMEWORK}}
+
+**Why we chose it:**
+{{E2E_TEST_RATIONALE}}
+
+---
+
+## Third-Party Services
+
+### Authentication
+
+**Choice:** {{AUTH_SERVICE}}
+
+**Why we chose it:**
+{{AUTH_SERVICE_RATIONALE}}
+
+### Payment Processing (if applicable)
+
+**Choice:** {{PAYMENT_SERVICE}}
+
+**Why we chose it:**
+{{PAYMENT_SERVICE_RATIONALE}}
+
+### Email
+
+**Choice:** {{EMAIL_SERVICE}}
+
+**Why we chose it:**
+{{EMAIL_SERVICE_RATIONALE}}
+
+### Analytics
+
+**Choice:** {{ANALYTICS_SERVICE}}
+
+**Why we chose it:**
+{{ANALYTICS_SERVICE_RATIONALE}}
+
+---
+
+## Development Tools
+
+### IDE/Editor
+
+**Recommended:** {{RECOMMENDED_IDE}}
+
+### Code Quality
+
+**Linting:** {{LINTING_TOOLS}}
+**Formatting:** {{FORMATTING_TOOLS}}
+**Type Checking:** {{TYPE_CHECKING}}
+
+### Version Control
+
+**Choice:** {{VCS}}
+**Hosting:** {{VCS_HOSTING}}
+
+---
+
+## Security Tools
+
+{{SECURITY_TOOLS}}
+
+---
+
+## Documentation Tools
+
+**Choice:** {{DOCUMENTATION_TOOLS}}
+
+**Why we chose it:**
+{{DOCUMENTATION_RATIONALE}}
+
+---
+
+## Complete Technology Matrix
+
+| Layer | Technology | Version | Rationale |
+|-------|-----------|---------|-----------|
+{{TECHNOLOGY_MATRIX}}
+
+---
+
+## Migration Path
+
+### Phase 1
+
+{{PHASE_1_TECH}}
+
+### Phase 2+
+
+{{FUTURE_TECH_ADDITIONS}}
+
+---
+
+## Learning Resources
+
+### Essential Resources
+
+{{ESSENTIAL_LEARNING_RESOURCES}}
+
+### Advanced Resources
+
+{{ADVANCED_LEARNING_RESOURCES}}
+
+---
+
+## Related Documents
+
+- [[PROJECT-OVERVIEW]] - Project context
+- [[REQUIREMENTS]] - What these technologies must support
+- [[ARCHITECTURE]] - How these technologies fit together
+- [[STANDARDS]] - Coding standards for these technologies
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

@@ -1,0 +1,127 @@
+---
+date: {{DATE}}
+project: {{PROJECT_NAME}}
+phase: {{CURRENT_PHASE}}
+---
+# Daily Journal - {{DATE}}
+
+**Project:** {{PROJECT_NAME}}
+**Phase:** {{CURRENT_PHASE}}
+**Day of Week:** {{DAY_OF_WEEK}}
+
+---
+
+## What I Worked On Today
+
+{{WORK_SUMMARY}}
+
+---
+
+## Progress Made
+
+### Completed
+
+- {{COMPLETED_1}}
+- {{COMPLETED_2}}
+- {{COMPLETED_3}}
+
+### In Progress
+
+- {{IN_PROGRESS_1}}
+- {{IN_PROGRESS_2}}
+
+### Blocked
+
+- {{BLOCKED_1}}
+
+---
+
+## What Worked Well
+
+{{WHAT_WORKED_WELL}}
+
+---
+
+## What Didn't Work
+
+{{WHAT_DIDNT_WORK}}
+
+---
+
+## Challenges & Blockers
+
+### Challenge 1
+
+**Issue:** {{CHALLENGE_1_DESCRIPTION}}
+**Impact:** {{CHALLENGE_1_IMPACT}}
+**Resolution:** {{CHALLENGE_1_RESOLUTION}}
+
+### Blocker 1
+
+**Issue:** {{BLOCKER_1_DESCRIPTION}}
+**Waiting on:** {{BLOCKER_1_DEPENDENCY}}
+**Workaround:** {{BLOCKER_1_WORKAROUND}}
+
+---
+
+## Decisions Made
+
+### Decision 1
+
+**Context:** {{DECISION_1_CONTEXT}}
+**Decision:** {{DECISION_1_WHAT}}
+**Rationale:** {{DECISION_1_WHY}}
+
+---
+
+## Learning & Insights
+
+{{LEARNING_INSIGHTS}}
+
+---
+
+## Questions for AI/Research
+
+1. {{QUESTION_1}}
+2. {{QUESTION_2}}
+
+---
+
+## Tomorrow's Plan
+
+### Priority Tasks
+
+1. {{TOMORROW_TASK_1}}
+2. {{TOMORROW_TASK_2}}
+3. {{TOMORROW_TASK_3}}
+
+### If Time Permits
+
+- {{OPTIONAL_TASK_1}}
+
+---
+
+## Time Tracking (Optional)
+
+**Hours worked:** {{HOURS_WORKED}}
+**Focus areas:**
+- {{FOCUS_AREA_1}}: {{HOURS_1}} hours
+- {{FOCUS_AREA_2}}: {{HOURS_2}} hours
+
+---
+
+## Notes
+
+{{ADDITIONAL_NOTES}}
+
+---
+
+## Links
+
+**Related code:** {{CODE_LINKS}}
+**Related docs:** {{DOC_LINKS}}
+**External resources:** {{EXTERNAL_LINKS}}
+
+---
+
+**Mood/Energy:** {{MOOD_EMOJI}} {{MOOD_NOTES}}

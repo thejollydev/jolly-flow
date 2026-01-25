@@ -1,0 +1,104 @@
+# AI Context - {{PROJECT_NAME}}
+
+**Last Updated:** {{DATE}}
+**Project:** {{PROJECT_NAME}}
+**Current Phase:** {{CURRENT_PHASE}}
+
+---
+
+## Project Status
+
+**What is this project?**
+{{PROJECT_DESCRIPTION}}
+
+**Current state:**
+- Status: {{PROJECT_STATUS}}
+- Phase: {{CURRENT_PHASE}}
+
+**Repository locations:**
+- Code: `~/Projects/{{PROJECT_SLUG}}/`
+- Planning docs: `~/GoogleDrive/Obsidian/JollyProjects/{{PROJECT_SLUG}}/`
+
+---
+
+## What's Been Accomplished
+
+*Agents will update this section after completing tasks*
+
+---
+
+## Next Steps
+
+**Current Focus:** {{CURRENT_FOCUS}}
+
+### High Priority:
+1. {{NEXT_STEP_1}}
+2. {{NEXT_STEP_2}}
+3. {{NEXT_STEP_3}}
+
+---
+
+## Open Questions
+
+*Add questions that need clarification or decisions*
+
+---
+
+## Decisions Made
+
+**Key decisions:**
+1. {{DECISION_1}}
+2. {{DECISION_2}}
+
+---
+
+## Recent Changes
+
+**{{DATE}}:**
+- Project initialized with jolly-flow
+- Templates copied from TheJollyMethod
+- Git repositories created
+
+---
+
+## For LLM Agents
+
+**If you're working on this project:**
+
+1. **Read this file FIRST** to understand current state
+2. **Check ROADMAP.md** to see what phase we're in
+3. **Reference ARCHITECTURE.md** for system design
+4. **Follow standards** from STANDARDS.md (project-specific) and TheJollyMethod/standards/ (global)
+5. **Update this file** after completing any tasks
+
+**Current focus:** {{CURRENT_FOCUS}}
+
+**Models to use:**
+- Planning/design: Choose based on quota availability
+- Implementation: Choose based on quota availability
+- Review: Use different model than primary (cross-check)
+
+---
+
+## Known Issues
+
+*None yet*
+
+---
+
+## Resources
+
+**Project Documentation:**
+- [PROJECT-OVERVIEW.md](PROJECT-OVERVIEW.md)
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [ROADMAP.md](ROADMAP.md)
+- [TECH-STACK.md](TECH-STACK.md)
+
+**TheJollyMethod Framework:**
+- Templates: `~/GoogleDrive/Obsidian/TheJollyMethod/templates/`
+- Standards: `~/GoogleDrive/Obsidian/TheJollyMethod/standards/`
+- Prompts: `~/GoogleDrive/Obsidian/TheJollyMethod/prompts/`
+
+---
+
+**Status:** {{PROJECT_STATUS}}

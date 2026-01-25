@@ -1,0 +1,101 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+status: {{PROJECT_STATUS}}
+---
+# {{PROJECT_NAME}} - Project Overview
+
+**Project Type:** {{PROJECT_TYPE}}
+**Created:** {{CREATED_DATE}}
+**Status:** {{PROJECT_STATUS}}
+**Current Phase:** {{CURRENT_PHASE}}
+
+---
+
+## Executive Summary
+
+{{EXECUTIVE_SUMMARY}}
+
+---
+
+## Problem Statement
+
+### What Problem Are We Solving?
+
+{{PROBLEM_DESCRIPTION}}
+
+### Who Has This Problem?
+
+{{TARGET_USERS}}
+
+### Why Solve It Now?
+
+{{TIMING_JUSTIFICATION}}
+
+---
+
+## Solution Overview
+
+### What Are We Building?
+
+{{SOLUTION_DESCRIPTION}}
+
+### Key Features
+
+{{KEY_FEATURES}}
+
+### Success Criteria
+
+{{SUCCESS_METRICS}}
+
+---
+
+## Project Scope
+
+### In Scope
+
+{{IN_SCOPE}}
+
+### Out of Scope
+
+{{OUT_OF_SCOPE}}
+
+### Future Considerations
+
+{{FUTURE_SCOPE}}
+
+---
+
+## Stakeholders
+
+### Primary Stakeholders
+
+{{PRIMARY_STAKEHOLDERS}}
+
+### Key Decision Makers
+
+{{DECISION_MAKERS}}
+
+---
+
+## Timeline Overview
+
+**Estimated Duration:** {{ESTIMATED_DURATION}}
+**Target Launch:** {{TARGET_LAUNCH_DATE}}
+
+See [[ROADMAP]] for detailed phase breakdown.
+
+---
+
+## Related Documents
+
+- [[REQUIREMENTS]] - Detailed requirements and use cases
+- [[ARCHITECTURE]] - System architecture and design
+- [[TECH-STACK]] - Technology choices and justifications
+- [[ROADMAP]] - Phase-based implementation plan
+- [[AI-CONTEXT]] - Current project state for LLM handoffs
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

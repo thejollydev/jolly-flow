@@ -1,0 +1,263 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Coding Standards
+
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+
+---
+
+## Overview
+
+This document defines the coding standards, conventions, and best practices for the {{PROJECT_NAME}} project. All code must follow these standards unless explicitly documented otherwise.
+
+---
+
+## General Principles
+
+1. **{{PRINCIPLE_1}}**
+2. **{{PRINCIPLE_2}}**
+3. **{{PRINCIPLE_3}}**
+
+---
+
+## Code Organization
+
+### Project Structure
+
+{{PROJECT_STRUCTURE}}
+
+### File Naming
+
+{{FILE_NAMING_CONVENTIONS}}
+
+### Directory Structure
+
+{{DIRECTORY_STRUCTURE}}
+
+---
+
+## Language-Specific Standards
+
+### {{PRIMARY_LANGUAGE}} Standards
+
+#### Code Style
+
+{{LANGUAGE_CODE_STYLE}}
+
+#### Naming Conventions
+
+**Variables:**
+{{VARIABLE_NAMING}}
+
+**Functions:**
+{{FUNCTION_NAMING}}
+
+**Classes:**
+{{CLASS_NAMING}}
+
+**Constants:**
+{{CONSTANT_NAMING}}
+
+#### Documentation
+
+{{CODE_DOCUMENTATION}}
+
+#### Best Practices
+
+{{LANGUAGE_BEST_PRACTICES}}
+
+---
+
+## Testing Standards
+
+### Unit Tests
+
+**Framework:** {{UNIT_TEST_FRAMEWORK}}
+
+**Requirements:**
+{{UNIT_TEST_REQUIREMENTS}}
+
+**Coverage Target:** {{TEST_COVERAGE_TARGET}}
+
+### Integration Tests
+
+{{INTEGRATION_TEST_STANDARDS}}
+
+### E2E Tests
+
+{{E2E_TEST_STANDARDS}}
+
+### Test Naming
+
+{{TEST_NAMING_CONVENTIONS}}
+
+---
+
+## Documentation Standards
+
+### Code Comments
+
+**When to comment:**
+{{WHEN_TO_COMMENT}}
+
+**Comment style:**
+{{COMMENT_STYLE}}
+
+### API Documentation
+
+{{API_DOCUMENTATION_STANDARDS}}
+
+### README Files
+
+{{README_STANDARDS}}
+
+---
+
+## Git Workflow
+
+### Branch Naming
+
+{{BRANCH_NAMING}}
+
+### Commit Messages
+
+**Format:**
+{{COMMIT_MESSAGE_FORMAT}}
+
+**Examples:**
+{{COMMIT_MESSAGE_EXAMPLES}}
+
+### Pull Request Process
+
+{{PR_PROCESS}}
+
+---
+
+## Code Review Standards
+
+### What to Check
+
+{{CODE_REVIEW_CHECKLIST}}
+
+### Approval Requirements
+
+{{APPROVAL_REQUIREMENTS}}
+
+---
+
+## Security Standards
+
+### Authentication
+
+{{AUTH_STANDARDS}}
+
+### Data Validation
+
+{{VALIDATION_STANDARDS}}
+
+### Sensitive Data
+
+{{SENSITIVE_DATA_HANDLING}}
+
+### Dependencies
+
+{{DEPENDENCY_MANAGEMENT}}
+
+---
+
+## Performance Standards
+
+### Response Time Targets
+
+{{RESPONSE_TIME_TARGETS}}
+
+### Resource Usage
+
+{{RESOURCE_USAGE_STANDARDS}}
+
+### Optimization Guidelines
+
+{{OPTIMIZATION_GUIDELINES}}
+
+---
+
+## Error Handling
+
+### Error Types
+
+{{ERROR_TYPES}}
+
+### Logging Standards
+
+**Log Levels:**
+{{LOG_LEVELS}}
+
+**What to Log:**
+{{WHAT_TO_LOG}}
+
+**What NOT to Log:**
+{{WHAT_NOT_TO_LOG}}
+
+---
+
+## Accessibility Standards
+
+{{ACCESSIBILITY_REQUIREMENTS}}
+
+---
+
+## DevOps Standards
+
+### Environment Variables
+
+{{ENVIRONMENT_VARIABLE_STANDARDS}}
+
+### Configuration Management
+
+{{CONFIG_MANAGEMENT}}
+
+### Deployment
+
+{{DEPLOYMENT_STANDARDS}}
+
+---
+
+## Tools & Linting
+
+### Required Tools
+
+{{REQUIRED_TOOLS}}
+
+### Linter Configuration
+
+{{LINTER_CONFIG}}
+
+### Pre-commit Hooks
+
+{{PRE_COMMIT_HOOKS}}
+
+---
+
+## Exceptions
+
+**When standards don't apply:**
+{{STANDARD_EXCEPTIONS}}
+
+**How to document exceptions:**
+{{EXCEPTION_DOCUMENTATION}}
+
+---
+
+## Related Documents
+
+- [[TECH-STACK]] - Technologies these standards apply to
+- [[ARCHITECTURE]] - Architectural patterns to follow
+- See also: Global standards in `TheJollyMethod/standards/`
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

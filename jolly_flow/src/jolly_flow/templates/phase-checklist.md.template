@@ -1,0 +1,163 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+phase: {{PHASE_NUMBER}}
+---
+# Phase {{PHASE_NUMBER}} - Acceptance Criteria Checklist
+
+**Phase:** {{PHASE_NAME}}
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+
+---
+
+## Phase Completion Criteria
+
+This checklist defines what "done" means for Phase {{PHASE_NUMBER}}. All items must be checked before completing this phase.
+
+---
+
+## Functional Requirements
+
+### Feature 1: {{FEATURE_1_NAME}}
+
+- [ ] {{FEATURE_1_CRITERION_1}}
+- [ ] {{FEATURE_1_CRITERION_2}}
+- [ ] {{FEATURE_1_CRITERION_3}}
+
+### Feature 2: {{FEATURE_2_NAME}}
+
+- [ ] {{FEATURE_2_CRITERION_1}}
+- [ ] {{FEATURE_2_CRITERION_2}}
+- [ ] {{FEATURE_2_CRITERION_3}}
+
+{{ADDITIONAL_FEATURES}}
+
+---
+
+## Technical Requirements
+
+### Code Quality
+
+- [ ] All code follows [[STANDARDS|coding standards]]
+- [ ] Code review completed and approved
+- [ ] No linter errors or warnings
+- [ ] Type checking passes (if applicable)
+- [ ] No security vulnerabilities detected
+
+### Testing
+
+- [ ] Unit test coverage >= {{UNIT_TEST_COVERAGE_TARGET}}%
+- [ ] All unit tests passing
+- [ ] Integration tests implemented and passing
+- [ ] E2E tests implemented and passing (if applicable)
+- [ ] Manual testing completed
+
+### Documentation
+
+- [ ] Code documented (inline comments where needed)
+- [ ] API documentation updated (if applicable)
+- [ ] README updated
+- [ ] ARCHITECTURE.md updated if architecture changed
+- [ ] AI-CONTEXT.md updated with current state
+
+---
+
+## Deployment Requirements
+
+- [ ] Builds successfully without errors
+- [ ] Deployment pipeline works
+- [ ] Environment variables documented
+- [ ] Configuration validated
+- [ ] Database migrations (if any) tested
+
+---
+
+## Performance Requirements
+
+- [ ] Meets response time targets: {{RESPONSE_TIME_TARGET}}
+- [ ] Resource usage within limits: {{RESOURCE_LIMIT}}
+- [ ] Load testing completed (if applicable)
+- [ ] Performance optimizations documented
+
+---
+
+## Security Requirements
+
+- [ ] Authentication implemented correctly
+- [ ] Authorization rules enforced
+- [ ] Input validation in place
+- [ ] Sensitive data encrypted
+- [ ] Security scan completed
+- [ ] No exposed secrets or API keys
+
+---
+
+## Accessibility Requirements
+
+- [ ] {{ACCESSIBILITY_CRITERION_1}}
+- [ ] {{ACCESSIBILITY_CRITERION_2}}
+- [ ] {{ACCESSIBILITY_CRITERION_3}}
+
+---
+
+## User Experience Requirements
+
+- [ ] {{UX_CRITERION_1}}
+- [ ] {{UX_CRITERION_2}}
+- [ ] {{UX_CRITERION_3}}
+
+---
+
+## Integration Requirements
+
+- [ ] All third-party integrations working
+- [ ] API contracts verified
+- [ ] Error handling tested
+- [ ] Fallback mechanisms in place
+
+---
+
+## DevOps Requirements
+
+- [ ] CI/CD pipeline passing
+- [ ] Monitoring configured
+- [ ] Logging implemented
+- [ ] Error tracking set up
+- [ ] Backup strategy validated
+
+---
+
+## Phase-Specific Checklist
+
+{{PHASE_SPECIFIC_CRITERIA}}
+
+---
+
+## Known Issues & Technical Debt
+
+**Document any known issues or technical debt introduced in this phase:**
+
+{{KNOWN_ISSUES}}
+
+---
+
+## Sign-Off
+
+**Phase completed by:** {{COMPLETED_BY}}
+**Completion date:** {{COMPLETION_DATE}}
+
+**Ready for next phase?** {{READY_FOR_NEXT_PHASE}}
+
+---
+
+## Related Documents
+
+- [[phase-{{PHASE_NUMBER}}/overview]] - Phase objectives and approach
+- [[phase-{{PHASE_NUMBER}}/implementation-guide]] - Implementation steps
+- [[phase-{{PHASE_NUMBER}}/retrospective]] - Phase retrospective (generated on completion)
+
+---
+
+**Last Updated:** {{MODIFIED_DATE}}

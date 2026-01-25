@@ -1,0 +1,219 @@
+---
+created: {{CREATED_DATE}}
+modified: {{MODIFIED_DATE}}
+project: {{PROJECT_NAME}}
+---
+# {{PROJECT_NAME}} - Implementation Roadmap
+
+**Generated:** {{CREATED_DATE}}
+**Last Updated:** {{MODIFIED_DATE}}
+**Current Phase:** {{CURRENT_PHASE}}
+
+---
+
+## Roadmap Overview
+
+**Total Phases:** {{TOTAL_PHASES}}
+**Estimated Duration:** {{ESTIMATED_DURATION}}
+**Target Launch:** {{TARGET_LAUNCH}}
+
+### Phase Summary
+
+{{PHASE_SUMMARY_TABLE}}
+
+---
+
+## Phase 0: Foundation & Planning ✅
+
+**Status:** {{PHASE_0_STATUS}}
+**Duration:** {{PHASE_0_DURATION}}
+
+### Objectives
+
+{{PHASE_0_OBJECTIVES}}
+
+### Deliverables
+
+- [x] {{PHASE_0_DELIVERABLE_1}}
+- [x] {{PHASE_0_DELIVERABLE_2}}
+- [x] {{PHASE_0_DELIVERABLE_3}}
+
+### Outcomes
+
+{{PHASE_0_OUTCOMES}}
+
+---
+
+## Phase 1: {{PHASE_1_NAME}}
+
+**Status:** {{PHASE_1_STATUS}}
+**Duration:** {{PHASE_1_DURATION}}
+**Dependencies:** {{PHASE_1_DEPENDENCIES}}
+
+### Objectives
+
+{{PHASE_1_OBJECTIVES}}
+
+### Key Deliverables
+
+- [ ] {{PHASE_1_DELIVERABLE_1}}
+- [ ] {{PHASE_1_DELIVERABLE_2}}
+- [ ] {{PHASE_1_DELIVERABLE_3}}
+
+### Success Criteria
+
+{{PHASE_1_SUCCESS_CRITERIA}}
+
+### Risks
+
+{{PHASE_1_RISKS}}
+
+---
+
+## Phase 2: {{PHASE_2_NAME}}
+
+**Status:** {{PHASE_2_STATUS}}
+**Duration:** {{PHASE_2_DURATION}}
+**Dependencies:** {{PHASE_2_DEPENDENCIES}}
+
+### Objectives
+
+{{PHASE_2_OBJECTIVES}}
+
+### Key Deliverables
+
+- [ ] {{PHASE_2_DELIVERABLE_1}}
+- [ ] {{PHASE_2_DELIVERABLE_2}}
+- [ ] {{PHASE_2_DELIVERABLE_3}}
+
+### Success Criteria
+
+{{PHASE_2_SUCCESS_CRITERIA}}
+
+### Risks
+
+{{PHASE_2_RISKS}}
+
+---
+
+## Phase 3: {{PHASE_3_NAME}}
+
+**Status:** {{PHASE_3_STATUS}}
+**Duration:** {{PHASE_3_DURATION}}
+**Dependencies:** {{PHASE_3_DEPENDENCIES}}
+
+### Objectives
+
+{{PHASE_3_OBJECTIVES}}
+
+### Key Deliverables
+
+- [ ] {{PHASE_3_DELIVERABLE_1}}
+- [ ] {{PHASE_3_DELIVERABLE_2}}
+- [ ] {{PHASE_3_DELIVERABLE_3}}
+
+### Success Criteria
+
+{{PHASE_3_SUCCESS_CRITERIA}}
+
+### Risks
+
+{{PHASE_3_RISKS}}
+
+---
+
+{{ADDITIONAL_PHASES}}
+
+---
+
+## Milestones
+
+### M1: {{MILESTONE_1_NAME}}
+
+**Target Date:** {{MILESTONE_1_DATE}}
+**Phase:** {{MILESTONE_1_PHASE}}
+**Criteria:** {{MILESTONE_1_CRITERIA}}
+
+### M2: {{MILESTONE_2_NAME}}
+
+**Target Date:** {{MILESTONE_2_DATE}}
+**Phase:** {{MILESTONE_2_PHASE}}
+**Criteria:** {{MILESTONE_2_CRITERIA}}
+
+{{ADDITIONAL_MILESTONES}}
+
+---
+
+## Dependencies & Blockers
+
+### Cross-Phase Dependencies
+
+{{CROSS_PHASE_DEPENDENCIES}}
+
+### External Dependencies
+
+{{EXTERNAL_DEPENDENCIES}}
+
+### Known Blockers
+
+{{KNOWN_BLOCKERS}}
+
+---
+
+## Resource Requirements
+
+### Phase 1
+
+{{PHASE_1_RESOURCES}}
+
+### Phase 2
+
+{{PHASE_2_RESOURCES}}
+
+### Phase 3+
+
+{{LATER_PHASE_RESOURCES}}
+
+---
+
+## Risk Management
+
+### High Priority Risks
+
+{{HIGH_PRIORITY_RISKS}}
+
+### Mitigation Strategies
+
+{{RISK_MITIGATION}}
+
+---
+
+## Future Considerations
+
+### Post-Launch
+
+{{POST_LAUNCH_PLANS}}
+
+### Potential Pivots
+
+{{POTENTIAL_PIVOTS}}
+
+---
+
+## Related Documents
+
+- [[PROJECT-OVERVIEW]] - Project context and goals
+- [[REQUIREMENTS]] - What we're building
+- [[ARCHITECTURE]] - How we're building it
+- [[phases/phase-1/overview]] - Detailed Phase 1 plan (generated when starting Phase 1)
+
+---
+
+## Notes
+
+{{ROADMAP_NOTES}}
+
+---
+
+**Current Phase:** {{CURRENT_PHASE}}
+**Last Updated:** {{MODIFIED_DATE}}
