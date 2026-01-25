@@ -1,0 +1,5 @@
+vault_root: "/home/joseph/GoogleDrive/Obsidian/JollyProjects/TemplateTest"
+repo_root: "/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_sync/tests/output"
+sync:
+  - source: "PROJECT-OVERVIEW.md"
+    dest: "README.md"
