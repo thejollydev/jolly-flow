@@ -6,7 +6,7 @@ class Pipeline:
     def __init__(self):
         self.name = "The Jolly Method"
         # Path to the jolly-flow executable in the venv
-        self.jolly_path = "/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/venv/bin/jolly-flow"
+        self.jolly_path = "/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/.venv/bin/jolly-flow"
 
     async def pipe(self, user_message: str, model_id: str, messages: List[dict], body: dict) -> Union[str, Generator, Iterator]:
         """

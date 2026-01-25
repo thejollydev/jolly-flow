@@ -31,7 +31,7 @@ def sync(
 @app.command()
 def generate_requirements(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
 ):
     """Runs the Requirements Agent (Phase 0)."""
     run_agent_workflow(project_path, model, create_requirements_graph, "Requirements")
@@ -39,7 +39,7 @@ def generate_requirements(
 @app.command()
 def generate_architecture(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
 ):
     """Runs the Architect Agent (Phase 0)."""
     run_agent_workflow(project_path, model, create_architecture_graph, "Architecture")
@@ -47,7 +47,7 @@ def generate_architecture(
 @app.command()
 def generate_roadmap(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
 ):
     """Runs the Planner Agent (Phase 0)."""
     run_agent_workflow(project_path, model, create_roadmap_graph, "Roadmap")
@@ -56,7 +56,7 @@ def generate_roadmap(
 def start_phase(
     phase: str = typer.Argument(..., help="Phase number to start"),
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
 ):
     """Generates detailed guides for a specific phase."""
     run_agent_workflow(project_path, model, create_phase_guide_graph, f"Phase {phase} Guide", phase)
