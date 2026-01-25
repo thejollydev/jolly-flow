@@ -54,6 +54,7 @@ def phase_guide_agent(state: ProjectState, model_id: str):
         "2. Fill out the phase-overview.md.template for this phase."
         "3. Fill out the phase-checklist.md.template with specific acceptance criteria."
         "4. Fill out the phase-implementation-guide.md.template with step-by-step tech instructions based on the Architecture."
+        f"\n\n---\nPROJECT CONTEXT (from AI-CONTEXT.md):\n{state.get('ai_context', 'No context available')}"
         f"\n\n---\nROADMAP:\n{roadmap_content}"
         f"\n\n---\nARCHITECTURE:\n{architecture_content}"
         f"\n\n---\nTEMPLATE: overview\n{overview_tpl}"

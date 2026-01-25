@@ -64,6 +64,60 @@ def save_roadmap(project_path: str, content: str) -> bool:
         return False
 
 
+def save_phase_guides(project_path: str, phase: str, content: str) -> bool:
+    """Save phase guide files (overview, checklist, implementation-guide).
+
+    Args:
+        project_path: Path to the project vault
+        phase: Phase number (e.g., "1", "2")
+        content: Content with ---FILE_SEPARATOR--- markers
+
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        # Create phases directory if it doesn't exist
+        phases_dir = Path(project_path) / "phases" / f"phase-{phase}"
+        phases_dir.mkdir(parents=True, exist_ok=True)
+
+        # Split content by separator
+        parts = content.split("---FILE_SEPARATOR---")
+
+        if len(parts) < 3:
+            print(f"Warning: Expected 3 parts, got {len(parts)}")
+            # Try to save what we have
+            if len(parts) >= 1:
+                overview_path = phases_dir / "overview.md"
+                with open(overview_path, "w") as f:
+                    f.write(parts[0].strip())
+            if len(parts) >= 2:
+                checklist_path = phases_dir / "checklist.md"
+                with open(checklist_path, "w") as f:
+                    f.write(parts[1].strip())
+            if len(parts) >= 3:
+                guide_path = phases_dir / "implementation-guide.md"
+                with open(guide_path, "w") as f:
+                    f.write(parts[2].strip())
+            return True
+
+        # Save all three files
+        overview_path = phases_dir / "overview.md"
+        checklist_path = phases_dir / "checklist.md"
+        guide_path = phases_dir / "implementation-guide.md"
+
+        with open(overview_path, "w") as f:
+            f.write(parts[0].strip())
+        with open(checklist_path, "w") as f:
+            f.write(parts[1].strip())
+        with open(guide_path, "w") as f:
+            f.write(parts[2].strip())
+
+        return True
+    except Exception as e:
+        print(f"Error saving phase guides: {e}")
+        return False
+
+
 def update_ai_context(project_path: str, agent_name: str, summary: str) -> bool:
     """Update AI-CONTEXT.md after agent completion.
 
