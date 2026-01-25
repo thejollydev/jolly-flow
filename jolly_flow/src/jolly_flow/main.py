@@ -5,6 +5,8 @@ from rich.console import Console
 from rich.table import Table
 from .sync.sync import sync_files
 from .scaffold import create_project
+from .agents.orchestrator import create_requirements_graph
+from langchain_core.messages import HumanMessage
 
 app = typer.Typer(help="The Jolly Method CLI")
 console = Console()
@@ -26,6 +28,34 @@ def sync(
 ):
     """Syncs docs from vault to repo."""
     sync_files(config, dry_run)
+
+@app.command()
+def generate_requirements(
+    project_path: str = typer.Option(".", help="Path to the project vault"),
+    model: str = typer.Option("gemini-2.5-flash", help="Model ID to use")
+):
+    """Runs the requirements gathering agent."""
+    # 1. Load context
+    context_path = Path(project_path) / "AI-CONTEXT.md"
+    if not context_path.exists():
+        console.print(f"[red]❌ Error: AI-CONTEXT.md not found in {project_path}[/red]")
+        return
+
+    # 2. Setup Initial State
+    initial_state = {
+        "messages": [HumanMessage(content="Let's start the requirements gathering.")],
+        "project_name": "Test Project",
+        "project_path": project_path,
+        "current_phase": "Phase 0",
+        "instructions": ""
+    }
+
+    # 3. Run Graph
+    graph = create_requirements_graph(model)
+    for output in graph.stream(initial_state):
+        for key, value in output.items():
+            if key == "agent":
+                console.print(f"\n[bold green]🤖 Agent:[/bold green] {value['messages'][-1].content}")
 
 @app.command()
 def status(project_path: str = typer.Option(".", help="Path to the project vault or repo")):
