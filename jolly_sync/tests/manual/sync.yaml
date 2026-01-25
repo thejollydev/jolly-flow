@@ -1,5 +1,0 @@
-vault_root: "/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_sync/tests/manual/vault"
-repo_root: "/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_sync/tests/manual/repo"
-sync:
-  - source: "TEST.md"
-    dest: "README.md"
