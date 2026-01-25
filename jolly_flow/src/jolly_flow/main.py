@@ -6,6 +6,7 @@ from rich.table import Table
 from .sync.sync import sync_files
 from .scaffold import create_project
 from .agents.orchestrator import create_requirements_graph, create_architecture_graph, create_roadmap_graph, create_phase_guide_graph
+from .model_selector import select_model_interactive
 from langchain_core.messages import HumanMessage
 
 app = typer.Typer(help="The Jolly Method CLI")
@@ -31,34 +32,46 @@ def sync(
 @app.command()
 def generate_requirements(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
+    model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Runs the Requirements Agent (Phase 0)."""
+    # Use interactive selection if model not specified
+    if model is None:
+        model = select_model_interactive("Requirements")
     run_agent_workflow(project_path, model, create_requirements_graph, "Requirements")
 
 @app.command()
 def generate_architecture(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
+    model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Runs the Architect Agent (Phase 0)."""
+    # Use interactive selection if model not specified
+    if model is None:
+        model = select_model_interactive("Architecture")
     run_agent_workflow(project_path, model, create_architecture_graph, "Architecture")
 
 @app.command()
 def generate_roadmap(
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
+    model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Runs the Planner Agent (Phase 0)."""
+    # Use interactive selection if model not specified
+    if model is None:
+        model = select_model_interactive("Roadmap")
     run_agent_workflow(project_path, model, create_roadmap_graph, "Roadmap")
 
 @app.command()
 def start_phase(
     phase: str = typer.Argument(..., help="Phase number to start"),
     project_path: str = typer.Option(".", help="Path to the project vault"),
-    model: str = typer.Option("gemini-2.5-flash-lite", help="Model ID to use")
+    model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Generates detailed guides for a specific phase."""
+    # Use interactive selection if model not specified
+    if model is None:
+        model = select_model_interactive(f"Phase {phase} Guide")
     run_agent_workflow(project_path, model, create_phase_guide_graph, f"Phase {phase} Guide", phase)
 
 def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name: str, phase: str = "0"):

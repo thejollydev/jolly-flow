@@ -1,4 +1,5 @@
 from langgraph.graph import StateGraph, END
+from langgraph.checkpoint.memory import MemorySaver
 from .state import ProjectState
 from .requirements import requirements_agent
 from .architect import architect_agent
@@ -27,7 +28,10 @@ def create_requirements_graph(model_id: str):
     workflow.add_edge('agent', 'human')
     workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', 'save': 'save'})
     workflow.add_edge('save', END)
-    return workflow.compile()
+
+    # Add state persistence
+    checkpointer = MemorySaver()
+    return workflow.compile(checkpointer=checkpointer)
 
 def create_architecture_graph(model_id: str):
     workflow = StateGraph(ProjectState)
@@ -42,7 +46,10 @@ def create_architecture_graph(model_id: str):
     workflow.add_edge('agent', 'human')
     workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', 'save': 'save'})
     workflow.add_edge('save', END)
-    return workflow.compile()
+
+    # Add state persistence
+    checkpointer = MemorySaver()
+    return workflow.compile(checkpointer=checkpointer)
 
 def create_roadmap_graph(model_id: str):
     workflow = StateGraph(ProjectState)
@@ -57,7 +64,10 @@ def create_roadmap_graph(model_id: str):
     workflow.add_edge('agent', 'human')
     workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', 'save': 'save'})
     workflow.add_edge('save', END)
-    return workflow.compile()
+
+    # Add state persistence
+    checkpointer = MemorySaver()
+    return workflow.compile(checkpointer=checkpointer)
 
 def create_phase_guide_graph(model_id: str):
     workflow = StateGraph(ProjectState)
@@ -70,4 +80,7 @@ def create_phase_guide_graph(model_id: str):
     workflow.set_entry_point('agent')
     workflow.add_edge('agent', 'human')
     workflow.add_conditional_edges('human', should_continue, {'agent': 'agent', END: END})
-    return workflow.compile()
+
+    # Add state persistence
+    checkpointer = MemorySaver()
+    return workflow.compile(checkpointer=checkpointer)

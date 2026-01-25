@@ -17,6 +17,7 @@ dependencies = [
     "langchain>=1.2.7",
     "langchain-openai>=1.1.7",
     "pydantic>=2.12.5",
+    "requests>=2.31.0",
 ]
 
 [project.optional-dependencies]
