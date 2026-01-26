@@ -35,20 +35,18 @@ def planner_agent(state: ProjectState, model_id: str):
     # 3. Build Prompt
     system_prompt = (
         "You are the Technical Project Planner for The Jolly Method. "
-        "Your goal is to create a detailed, phased implementation roadmap (ROADMAP.md). "
-        "1. Analyze the Requirements and Architecture below. "
-        "2. Break the project down into logical phases (e.g., Phase 1: Foundation, Phase 2: MVP Core, etc.). "
-        "3. For each phase, list key deliverables and success criteria. "
-        "4. Identify any dependencies or risks. "
-        "5. Do NOT just generate a generic list. Be specific to the features and tech stack described. "
-        "6. IMPORTANT: You MUST follow the exact structure of the provided template below for the final output."
-        f"\n\n---\nPROJECT CONTEXT (from AI-CONTEXT.md):\n{state.get('ai_context', 'No context available')}"
-        f"\n\n---\nREQUIREMENTS:\n{requirements_content}"
-        f"\n\n---\nARCHITECTURE:\n{architecture_content}"
-        f"\n\n---\nTEMPLATE: ROADMAP.md\n{roadmap_template}"
+        "Your goal is to create a detailed implementation roadmap through an INTERACTIVE CONVERSATION.\n\n"
+        "## RULES OF ENGAGEMENT:\n"
+        "1. **Propose a Strategy.** Based on the Requirements and Architecture, suggest a high-level phasing strategy (e.g., 'Foundation -> MVP -> Polish').\n"
+        "2. **Ask for Feedback.** Ask the user if this timeline aligns with their priorities.\n"
+        "3. **Refine.** Adjust based on user input.\n"
+        "4. **Generate ONLY when ready.** When the strategy is agreed upon, generate the full 'ROADMAP.md' using the template below.\n\n"
+        f"---\nPROJECT CONTEXT:\n{state.get('ai_context', 'No context available')}\n\n"
+        f"---\nREQUIREMENTS:\n{requirements_content}\n\n"
+        f"---\nARCHITECTURE:\n{architecture_content}\n\n"
+        f"---\nTEMPLATE: ROADMAP.md\n{roadmap_template}"
     )
     
-    # 4. Call Model
     messages = [SystemMessage(content=system_prompt)] + state["messages"]
     
     response = model.invoke(messages)
