@@ -191,7 +191,7 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
     context_path = Path(project_path) / "AI-CONTEXT.md"
     if not context_path.exists():
         console.print(f"[red]❌ Error: AI-CONTEXT.md not found at {context_path}[/red]")
-        console.print(f"[dim]Tip: Use 'cd' into your vault project folder or provide the project name via --project."[/dim])
+        console.print(f"[dim]Tip: Use 'cd' into your vault project folder or provide the project name via --project.[/dim]")
         return
 
     with open(context_path, "r") as f:
