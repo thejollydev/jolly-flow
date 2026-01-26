@@ -19,7 +19,7 @@ In Open WebUI, click the model dropdown and select **"The Jolly Method"**.
 ### 2. Check Status
 Type:
 ```
-/status --project-path /home/joseph/GoogleDrive/Obsidian/JollyProjects/my-project
+/status --project-path /path/to/your/obsidian/vault/project
 ```
 
 ### 3. Run Agents

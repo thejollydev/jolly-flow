@@ -1,125 +1,107 @@
 """
-The Jolly Method - Open WebUI Pipe Function
+jolly-flow - Open WebUI Pipe Function
 
-This is a Pipe Function (not a Pipeline server) that wraps the jolly-flow CLI
-and exposes it through Open WebUI's chat interface.
+Exposes jolly-flow CLI agents to the Open WebUI chat interface.
 """
 import os
 import asyncio
+import sys
 from typing import Union, AsyncGenerator
 from pydantic import BaseModel, Field
 
-
 class Pipe:
-    """
-    Open WebUI Pipe Function for The Jolly Method.
-
-    Provides a chat interface to jolly-flow CLI commands.
-    """
-
     class Valves(BaseModel):
-        """Configuration settings for The Jolly Method pipe function."""
-        jolly_path: str = Field(
-            default="/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/.venv/bin/jolly-flow",
-            description="Path to the jolly-flow executable in the virtual environment"
-        )
-        pythonpath: str = Field(
-            default="/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/src",
-            description="PYTHONPATH for jolly-flow execution"
+        source_path: str = Field(
+            default="/home/joseph/GoogleDrive/Projects/jolly-flow",
+            description="Path to the jolly-flow source directory (must be mounted in Docker)"
         )
 
     def __init__(self):
-        self.name = "The Jolly Method"
+        self.name = "jolly-flow"
         self.valves = self.Valves()
+        self._installed = False
 
-    async def pipe(
-        self,
-        body: dict,
-        __user__: dict = None,
-        __request__: dict = None
-    ) -> Union[str, AsyncGenerator[str, None]]:
-        """
-        Processes user messages and routes them to jolly-flow CLI commands.
+    async def ensure_installed(self):
+        """Installs the package in the container environment if missing."""
+        if self._installed: return
+        
+        try:
+            test = await asyncio.create_subprocess_exec(
+                "jolly-flow", "--version",
+                stdout=asyncio.subprocess.DEVNULL,
+                stderr=asyncio.subprocess.DEVNULL
+            )
+            await test.wait()
+            if test.returncode == 0:
+                self._installed = True
+                return
+        except FileNotFoundError:
+            pass
 
-        Args:
-            body: Request body containing messages and model info
-            __user__: User information (optional)
-            __request__: Request object (optional)
+        yield "⚙️ Bootstrapping jolly-flow in container...\n"
+        try:
+            install = await asyncio.create_subprocess_exec(
+                sys.executable, "-m", "pip", "install", "-e", ".",
+                cwd=self.valves.source_path,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.STDOUT
+            )
+            
+            async for line in install.stdout:
+                yield f"  > {line.decode()}"
+            
+            await install.wait()
+            if install.returncode == 0:
+                self._installed = True
+                yield "✅ Bootstrap complete!\n\n"
+            else:
+                yield "❌ Bootstrap failed.\n"
+        except Exception as e:
+            yield f"❌ Error: {str(e)}\n"
 
-        Returns:
-            String response or async generator for streaming output
-        """
-        # Extract data from body
+    async def pipe(self, body: dict, __user__: dict = None) -> Union[str, AsyncGenerator[str, None]]:
         messages = body.get("messages", [])
-        if not messages:
-            return "No messages received. Please send a command."
-
-        user_message = messages[-1].get("content", "")
-        model_id = body.get("model", "")
-
-        # Validate command format
+        if not messages: return "No messages received."
+        
+        user_message = messages[-1].get("content", "").strip()
         if not user_message.startswith("/"):
             return (
-                "**The Jolly Method** - Please use a command starting with `/`\n\n"
-                "Available commands:\n"
-                "- `/status` - Show current project status\n"
-                "- `/sync` - Synchronize vault docs to repo\n"
-                "- `/sync --dry-run` - Preview sync changes\n"
-                "- `/generate requirements` - Start requirements gathering\n"
-                "- `/generate architecture` - Start architecture design\n"
-                "- `/generate roadmap` - Start roadmap planning\n"
-                "- `/start-phase N` - Generate phase N guides\n"
+                "**jolly-flow** - Please use a slash command:\n\n"
+                "- `/status` - Current phase & status\n"
+                "- `/sync` - Transform & sync docs\n"
+                "- `/generate requirements` - Start interview\n"
+                "- `/start-phase N` - Get guides"
             )
 
-        # Parse command
-        command = user_message[1:].strip().split()
+        args = user_message[1:].split()
+        if not args: return "Empty command."
 
-        if not command:
-            return "Empty command. Please specify a jolly-flow command."
-
-        # Map chat commands to CLI commands
-        # Example: /generate requirements -> jolly-flow generate-requirements
-        if command[0] == "generate" and len(command) > 1:
-            cli_cmd = [self.valves.jolly_path, f"generate-{command[1]}"]
+        if args[0] == "generate" and len(args) > 1:
+            final_cmd = ["jolly-flow", f"generate-{args[1]}"] + args[2:]
         else:
-            cli_cmd = [self.valves.jolly_path] + command
+            final_cmd = ["jolly-flow"] + args
 
-        try:
-            # Execute jolly-flow command as subprocess
-            process = await asyncio.create_subprocess_exec(
-                *cli_cmd,
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.STDOUT,
-                env={
-                    **os.environ,
-                    "PYTHONPATH": self.valves.pythonpath
-                }
-            )
+        async def stream_output():
+            async for log in self.ensure_installed():
+                yield log
+            
+            if not self._installed:
+                yield "Error: jolly-flow is not installed in the container."
+                return
 
-            # Stream output line by line
-            async def stream_output() -> AsyncGenerator[str, None]:
-                """Stream subprocess output to chat interface."""
+            try:
+                process = await asyncio.create_subprocess_exec(
+                    *final_cmd,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.STDOUT,
+                    env=os.environ
+                )
                 while True:
                     line = await process.stdout.readline()
-                    if line:
-                        yield line.decode()
-                    else:
-                        break
-
-                # Wait for process to complete
+                    if line: yield line.decode() 
+                    else: break
                 await process.wait()
+            except Exception as e:
+                yield f"❌ Execution Error: {str(e)}"
 
-                # Report exit code if non-zero
-                if process.returncode != 0:
-                    yield f"\n⚠️ Command exited with code {process.returncode}\n"
-
-            return stream_output()
-
-        except FileNotFoundError:
-            return (
-                f"❌ Error: jolly-flow executable not found at:\n"
-                f"`{self.valves.jolly_path}`\n\n"
-                f"Please check the Valves configuration and ensure jolly-flow is installed."
-            )
-        except Exception as e:
-            return f"❌ Error executing command: {str(e)}"
+        return stream_output()

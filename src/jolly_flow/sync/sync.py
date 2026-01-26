@@ -108,8 +108,4 @@ def sync_files(config_path: str, dry_run: bool = False):
 
             # Copy images if configured
             if copy_images and transform_images:
-                # TODO: Implement actual image file copying
-                # This requires parsing content for image references and copying them
-                pass
-        else:
             print(f"  🔍 Dry run: would write to {dest_path}")

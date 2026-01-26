@@ -20,7 +20,7 @@ def configure_environment():
     if langsmith_key:
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
         os.environ["LANGCHAIN_API_KEY"] = langsmith_key
-        os.environ["LANGCHAIN_PROJECT"] = "The Jolly Method"
+        os.environ["LANGCHAIN_PROJECT"] = "jolly-flow"
         
         workspace_id = ConfigManager.get_key("langsmith_workspace_id")
         if workspace_id:
@@ -28,11 +28,15 @@ def configure_environment():
 
 configure_environment()
 
-app = typer.Typer(help="The Jolly Method CLI")
+app = typer.Typer(help="jolly-flow: Intelligent AI Project Orchestration")
 config_app = typer.Typer(help="Manage configuration and API keys")
 app.add_typer(config_app, name="config")
 
 console = Console()
+
+# --- Defaults ---
+DEFAULT_VAULT_ROOT = str(Path.home() / "Documents/jolly-vault")
+DEFAULT_PROJECTS_ROOT = str(Path.home() / "Documents/jolly-projects")
 
 # --- Config Commands ---
 @config_app.command("set-langsmith-key")
@@ -69,8 +73,8 @@ def show_config():
 @app.command()
 def new_project(
     name: str = typer.Argument(..., help="Name of the project"),
-    vault_root: str = typer.Option("/home/joseph/GoogleDrive/Obsidian/JollyProjects", help="Root directory for private vaults"),
-    projects_root: str = typer.Option("/home/joseph/GoogleDrive/Projects", help="Root directory for public repositories")
+    vault_root: str = typer.Option(DEFAULT_VAULT_ROOT, help="Root directory for private vaults"),
+    projects_root: str = typer.Option(DEFAULT_PROJECTS_ROOT, help="Root directory for public repositories")
 ):
     """Scaffolds a new project."""
     create_project(name, vault_root, projects_root)
@@ -88,7 +92,7 @@ def generate_requirements(
     project_path: str = typer.Option(".", help="Path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
-    """Runs the Requirements Agent (Phase 0)."""
+    """Interviews the user to define project scope and requirements."""
     if model is None:
         model = select_model_interactive("Requirements")
     run_agent_workflow(project_path, model, create_requirements_graph, "Requirements")
@@ -98,7 +102,7 @@ def generate_architecture(
     project_path: str = typer.Option(".", help="Path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
-    """Runs the Architect Agent (Phase 0)."""
+    """Designs the technical system architecture and stack."""
     if model is None:
         model = select_model_interactive("Architecture")
     run_agent_workflow(project_path, model, create_architecture_graph, "Architecture")
@@ -108,7 +112,7 @@ def generate_roadmap(
     project_path: str = typer.Option(".", help="Path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
-    """Runs the Planner Agent (Phase 0)."""
+    """Creates a phased implementation plan."""
     if model is None:
         model = select_model_interactive("Roadmap")
     run_agent_workflow(project_path, model, create_roadmap_graph, "Roadmap")
@@ -119,7 +123,7 @@ def start_phase(
     project_path: str = typer.Option(".", help="Path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
-    """Generates detailed guides for a specific phase."""
+    """Generates detailed implementation guides for a specific phase."""
     if model is None:
         model = select_model_interactive(f"Phase {phase} Guide")
     run_agent_workflow(project_path, model, create_phase_guide_graph, f"Phase {phase} Guide", phase)
@@ -133,7 +137,7 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
     with open(context_path, "r") as f:
         ai_context = f.read()
 
-    console.print(f"[dim]📖 Loaded AI-CONTEXT.md ({len(ai_context)} chars)[/dim]")
+    console.print(f"[dim]📖 Loaded context from AI-CONTEXT.md[/dim]")
 
     initial_state = {
         "messages": [HumanMessage(content=f"Let's generate the {agent_name}.")],
@@ -145,13 +149,11 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
         "ai_context": ai_context
     }
 
-    # IMPORTANT: LangGraph checkpointers require a thread_id in the config
     config = {"configurable": {"thread_id": str(uuid.uuid4())}}
 
     graph = graph_factory(model)
     final_output = None
     
-    # Pass the config to stream()
     for output in graph.stream(initial_state, config=config):
         for key, value in output.items():
             final_output = value
