@@ -3,6 +3,7 @@ import re
 import os
 import uuid
 from pathlib import Path
+from typing import Optional
 from rich.console import Console
 from rich.table import Table
 from .sync.sync import sync_files
@@ -33,6 +34,28 @@ config_app = typer.Typer(help="Manage configuration and API keys")
 app.add_typer(config_app, name="config")
 
 console = Console()
+
+# --- Helpers ---
+def resolve_project_path(path_or_name: str) -> Path:
+    """
+    Resolves a project path. 
+    1. Checks if it's a valid local path.
+    2. If not, checks if it's a project name in the configured vault_root.
+    """
+    path = Path(path_or_name)
+    
+    # If path exists and has context, use it
+    if (path / "AI-CONTEXT.md").exists():
+        return path.absolute()
+    
+    # If not, check the vault_root
+    vault_root = Path(ConfigManager.get_vault_root())
+    vault_project_path = vault_root / path_or_name
+    
+    if (vault_project_path / "AI-CONTEXT.md").exists():
+        return vault_project_path.absolute()
+        
+    return path.absolute()
 
 # --- Setup Command ---
 @app.command("setup")
@@ -107,10 +130,8 @@ def new_project(
     projects_root: str = typer.Option(None, help="Root directory for public repositories")
 ):
     """Scaffolds a new project."""
-    # Priority: 1. CLI Option, 2. Config File, 3. Default
     v_root = vault_root or ConfigManager.get_vault_root()
     p_root = projects_root or ConfigManager.get_projects_root()
-    
     create_project(name, v_root, p_root)
 
 @app.command()
@@ -123,30 +144,33 @@ def sync(
 
 @app.command()
 def generate_requirements(
-    project_path: str = typer.Option(".", help="Path to the project vault"),
+    project: str = typer.Option(".", help="Project name or path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Interviews the user to define project scope and requirements."""
+    project_path = str(resolve_project_path(project))
     if model is None:
         model = select_model_interactive("Requirements")
     run_agent_workflow(project_path, model, create_requirements_graph, "Requirements")
 
 @app.command()
 def generate_architecture(
-    project_path: str = typer.Option(".", help="Path to the project vault"),
+    project: str = typer.Option(".", help="Project name or path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Designs the technical system architecture and stack."""
+    project_path = str(resolve_project_path(project))
     if model is None:
         model = select_model_interactive("Architecture")
     run_agent_workflow(project_path, model, create_architecture_graph, "Architecture")
 
 @app.command()
 def generate_roadmap(
-    project_path: str = typer.Option(".", help="Path to the project vault"),
+    project: str = typer.Option(".", help="Project name or path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Creates a phased implementation plan."""
+    project_path = str(resolve_project_path(project))
     if model is None:
         model = select_model_interactive("Roadmap")
     run_agent_workflow(project_path, model, create_roadmap_graph, "Roadmap")
@@ -154,10 +178,11 @@ def generate_roadmap(
 @app.command()
 def start_phase(
     phase: str = typer.Argument(..., help="Phase number to start"),
-    project_path: str = typer.Option(".", help="Path to the project vault"),
+    project: str = typer.Option(".", help="Project name or path to the project vault"),
     model: str = typer.Option(None, help="Model ID to use (interactive selection if not provided)")
 ):
     """Generates detailed implementation guides for a specific phase."""
+    project_path = str(resolve_project_path(project))
     if model is None:
         model = select_model_interactive(f"Phase {phase} Guide")
     run_agent_workflow(project_path, model, create_phase_guide_graph, f"Phase {phase} Guide", phase)
@@ -165,13 +190,14 @@ def start_phase(
 def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name: str, phase: str = "0"):
     context_path = Path(project_path) / "AI-CONTEXT.md"
     if not context_path.exists():
-        console.print(f"[red]❌ Error: AI-CONTEXT.md not found in {project_path}[/red]")
+        console.print(f"[red]❌ Error: AI-CONTEXT.md not found at {context_path}[/red]")
+        console.print(f"[dim]Tip: Use 'cd' into your vault project folder or provide the project name via --project."[/dim])
         return
 
     with open(context_path, "r") as f:
         ai_context = f.read()
 
-    console.print(f"[dim]📖 Loaded context from AI-CONTEXT.md[/dim]")
+    console.print(f"[dim]📖 Loaded context from {context_path}[/dim]")
 
     initial_state = {
         "messages": [HumanMessage(content=f"Let's generate the {agent_name}.")],
@@ -198,11 +224,13 @@ def run_agent_workflow(project_path: str, model: str, graph_factory, agent_name:
         print_token_usage(final_output)
 
 @app.command()
-def status(project_path: str = typer.Option(".", help="Path to the project vault or repo")):
+def status(project: str = typer.Option(".", help="Project name or path to the project vault or repo")):
     """Shows current project status from AI-CONTEXT.md."""
-    context_path = Path(project_path) / "AI-CONTEXT.md"
+    project_path = resolve_project_path(project)
+    context_path = project_path / "AI-CONTEXT.md"
+    
     if not context_path.exists():
-        console.print(f"[red]❌ Error: AI-CONTEXT.md not found in {project_path}[/red]")
+        console.print(f"[red]❌ Error: AI-CONTEXT.md not found at {context_path}[/red]")
         return
 
     with open(context_path, "r") as f:
@@ -214,11 +242,12 @@ def status(project_path: str = typer.Option(".", help="Path to the project vault
     phase = phase_match.group(1) if phase_match else "Unknown"
     status = status_match.group(1) if status_match else "Unknown"
 
-    table = Table(title="Project Status")
+    table = Table(title=f"Status: {project_path.name}")
     table.add_column("Property", style="cyan")
     table.add_column("Value", style="magenta")
     table.add_row("Phase", phase)
     table.add_row("Status", status)
+    table.add_row("Path", str(project_path))
 
     console.print(table)
 

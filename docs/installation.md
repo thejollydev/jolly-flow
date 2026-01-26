@@ -51,20 +51,28 @@ python main.py  # Default port: 8317
 
 ## 3. jolly-flow (The Engine)
 
-Install the orchestration engine locally.
+### Installation (Global Tool)
+We recommend installing `jolly-flow` as a tool so it is available from any directory.
 
 ```bash
+# Clone the repository
 git clone https://github.com/thejollydev/jolly-flow.git
 cd jolly-flow
+
+# Install uv (modern package manager)
 pip install uv
-uv sync
+
+# Install jolly-flow as a global tool
+uv tool install -e .
 ```
 
-### ⚙️ Initial Setup (Directories)
-Run the interactive setup to configure where your projects and vaults will be stored:
+*Note: The `-e` flag allows you to edit the code and have changes take effect immediately.*
+
+### ⚙️ Initial Setup
+Run the interactive setup to configure your directories:
 
 ```bash
-uv run jolly-flow setup
+jolly-flow setup
 ```
 
 ---
@@ -98,6 +106,6 @@ docker run -d -p 3000:8080 \
 Configure LangSmith to track agent performance.
 
 ```bash
-uv run jolly-flow config set-langsmith-key <YOUR_KEY>
+jolly-flow config set-langsmith-key <YOUR_KEY>
 ```
 
