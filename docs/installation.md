@@ -60,6 +60,13 @@ pip install uv
 uv sync
 ```
 
+### ⚙️ Initial Setup (Directories)
+Run the interactive setup to configure where your projects and vaults will be stored:
+
+```bash
+uv run jolly-flow setup
+```
+
 ---
 
 ## 4. Open WebUI (The Chat UI)
@@ -72,7 +79,7 @@ docker run -d -p 3000:8080 \
   -e ENABLE_TOOLS=true \
   -e ENABLE_FUNCTIONS=true \
   -v open-webui:/app/backend/data \
-  -v /path/to/your/google-drive:/path/to/your/google-drive \
+  -v /home/joseph/GoogleDrive:/home/joseph/GoogleDrive \
   --name open-webui \
   --restart always \
   ghcr.io/open-webui/open-webui:main

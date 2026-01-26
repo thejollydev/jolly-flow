@@ -34,9 +34,31 @@ app.add_typer(config_app, name="config")
 
 console = Console()
 
-# --- Defaults ---
-DEFAULT_VAULT_ROOT = str(Path.home() / "Documents/jolly-vault")
-DEFAULT_PROJECTS_ROOT = str(Path.home() / "Documents/jolly-projects")
+# --- Setup Command ---
+@app.command("setup")
+def run_setup():
+    """Interactive setup for jolly-flow."""
+    console.print("[bold cyan]🎩 Welcome to jolly-flow Setup![/bold cyan]")
+    
+    # 1. Vault Root
+    current_vault = ConfigManager.get_vault_root()
+    vault_root = typer.prompt(
+        "Enter the root directory for your private project vaults (where docs live)",
+        default=current_vault
+    )
+    ConfigManager.set_key("vault_root", vault_root)
+    
+    # 2. Projects Root
+    current_projects = ConfigManager.get_projects_root()
+    projects_root = typer.prompt(
+        "Enter the root directory for your public project repositories (where code lives)",
+        default=current_projects
+    )
+    ConfigManager.set_key("projects_root", projects_root)
+    
+    console.print("\n[bold green]✅ Configuration saved![/bold green]")
+    console.print(f"Vaults: [magenta]{vault_root}[/magenta]")
+    console.print(f"Projects: [magenta]{projects_root}[/magenta]")
 
 # --- Config Commands ---
 @config_app.command("set-langsmith-key")
@@ -56,28 +78,40 @@ def show_config():
     """Shows the current configuration."""
     key = ConfigManager.get_key("langsmith_api_key")
     ws_id = ConfigManager.get_key("langsmith_workspace_id")
+    vault = ConfigManager.get_vault_root()
+    projects = ConfigManager.get_projects_root()
+    
+    table = Table(title="jolly-flow Configuration")
+    table.add_column("Setting", style="cyan")
+    table.add_column("Value", style="magenta")
+    
+    table.add_row("Vault Root", vault)
+    table.add_row("Projects Root", projects)
     
     if key:
         masked = key[:4] + "..." + key[-4:]
-        console.print(f"LangSmith API Key: [cyan]{masked}[/cyan]")
+        table.add_row("LangSmith Key", masked)
     else:
-        console.print("LangSmith API Key: [yellow]Not set[/yellow]")
+        table.add_row("LangSmith Key", "[yellow]Not set[/yellow]")
         
-    if ws_id:
-        console.print(f"LangSmith Workspace ID: [cyan]{ws_id}[/cyan]")
-    else:
-        console.print("LangSmith Workspace ID: [yellow]Not set[/yellow]")
+    table.add_row("LangSmith Workspace", ws_id or "[yellow]Not set[/yellow]")
+    
+    console.print(table)
 
 
 # --- Main Commands ---
 @app.command()
 def new_project(
     name: str = typer.Argument(..., help="Name of the project"),
-    vault_root: str = typer.Option(DEFAULT_VAULT_ROOT, help="Root directory for private vaults"),
-    projects_root: str = typer.Option(DEFAULT_PROJECTS_ROOT, help="Root directory for public repositories")
+    vault_root: str = typer.Option(None, help="Root directory for private vaults"),
+    projects_root: str = typer.Option(None, help="Root directory for public repositories")
 ):
     """Scaffolds a new project."""
-    create_project(name, vault_root, projects_root)
+    # Priority: 1. CLI Option, 2. Config File, 3. Default
+    v_root = vault_root or ConfigManager.get_vault_root()
+    p_root = projects_root or ConfigManager.get_projects_root()
+    
+    create_project(name, v_root, p_root)
 
 @app.command()
 def sync(

@@ -107,5 +107,4 @@ def sync_files(config_path: str, dry_run: bool = False):
             print(f"  ✅ Written: {dest_path}")
 
             # Copy images if configured
-            if copy_images and transform_images:
             print(f"  🔍 Dry run: would write to {dest_path}")

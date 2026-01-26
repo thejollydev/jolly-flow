@@ -41,13 +41,19 @@ pip install uv
 uv sync
 ```
 
-### 2. Scaffold a Project
+### 2. Initial Setup (Configure Paths)
+
+```bash
+uv run jolly-flow setup
+```
+
+### 3. Scaffold a Project
 
 ```bash
 uv run jolly-flow new-project "My Next Project"
 ```
 
-### 3. Run the Agents
+### 4. Run the Agents
 
 ```bash
 # Start the Requirements interview

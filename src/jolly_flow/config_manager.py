@@ -35,7 +35,17 @@ class ConfigManager:
         ConfigManager._save_config(data)
 
     @staticmethod
-    def get_key(key: str) -> Optional[str]:
+    def get_key(key: str, default: Optional[str] = None) -> Optional[str]:
         """Retrieves a configuration key."""
         data = ConfigManager._load_config()
-        return data.get(key)
+        return data.get(key, default)
+
+    @staticmethod
+    def get_vault_root() -> str:
+        """Gets the configured vault root or default."""
+        return ConfigManager.get_key("vault_root", str(Path.home() / "Documents/jolly-vault"))
+
+    @staticmethod
+    def get_projects_root() -> str:
+        """Gets the configured projects root or default."""
+        return ConfigManager.get_key("projects_root", str(Path.home() / "Documents/jolly-projects"))
