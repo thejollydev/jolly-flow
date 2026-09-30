@@ -41,8 +41,8 @@ If your jolly-flow installation is in a different location:
 4. Click **Save**
 
 **Default Settings:**
-- `jolly_path`: `/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/.venv/bin/jolly-flow`
-- `pythonpath`: `/home/joseph/GoogleDrive/Projects/the-jolly-method/jolly_flow/src`
+- `jolly_path`: `~/GoogleDrive/Projects/the-jolly-method/jolly_flow/.venv/bin/jolly-flow`
+- `pythonpath`: `~/GoogleDrive/Projects/the-jolly-method/jolly_flow/src`
 
 ## Usage
 

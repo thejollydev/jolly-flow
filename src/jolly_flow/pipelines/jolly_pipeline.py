@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 class Pipe:
     class Valves(BaseModel):
         source_path: str = Field(
-            default="/home/joseph/GoogleDrive/Projects/jolly-flow",
+            default=os.path.expanduser("~/GoogleDrive/Projects/jolly-flow"),
             description="Path to the jolly-flow source directory (must be mounted in Docker)"
         )
 

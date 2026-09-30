@@ -47,6 +47,15 @@ pip install -r requirements.txt
 python main.py  # Default port: 8317
 ```
 
+jolly-flow reads the key it sends CLIProxyAPI from the environment, never from
+its source. Set it to one of the `api-keys` in your CLIProxyAPI config:
+
+```bash
+export CLIPROXY_API_KEY="<one of your CLIProxyAPI api-keys>"
+# Optional; this is the default:
+export CLIPROXY_BASE_URL="http://localhost:8317/v1"
+```
+
 ---
 
 ## 3. jolly-flow (The Engine)
@@ -87,7 +96,7 @@ docker run -d -p 3000:8080 \
   -e ENABLE_TOOLS=true \
   -e ENABLE_FUNCTIONS=true \
   -v open-webui:/app/backend/data \
-  -v /home/joseph/GoogleDrive:/home/joseph/GoogleDrive \
+  -v "$HOME/GoogleDrive:$HOME/GoogleDrive" \
   --name open-webui \
   --restart always \
   ghcr.io/open-webui/open-webui:main

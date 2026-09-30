@@ -4,6 +4,8 @@ from rich.console import Console
 from rich.table import Table
 import requests
 
+from jolly_flow import cliproxy
+
 console = Console()
 
 
@@ -15,8 +17,8 @@ def get_available_models():
     """
     try:
         response = requests.get(
-            "http://localhost:8317/v1/models",
-            headers={"Authorization": "Bearer sk-h4X6yuCGDs0p2Wdx3oJ3Z3Pnc1O9XeDuTqD1V9NqrM3yH"},
+            f"{cliproxy.base_url()}/models",
+            headers={"Authorization": f"Bearer {cliproxy.api_key()}"},
             timeout=5
         )
         if response.status_code == 200:
