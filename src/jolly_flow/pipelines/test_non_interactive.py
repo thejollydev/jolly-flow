@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from jolly_pipeline import Pipe
+import os
 
 
 async def test_non_interactive_commands():
@@ -54,7 +55,7 @@ async def test_non_interactive_commands():
     # Test 3: jolly-flow status with project path
     print("Test 3: /status --project-path (with test project)")
     print("-" * 70)
-    test_project = "/home/joseph/GoogleDrive/Obsidian/JollyProjects/jolly-test-project"
+    test_project = os.path.expanduser("~/GoogleDrive/Obsidian/JollyProjects/jolly-test-project")
     body = {
         "messages": [{"role": "user", "content": f"/status --project-path {test_project}"}],
         "model": "the-jolly-method"
